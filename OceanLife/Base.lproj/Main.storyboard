@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="1788" y="135.38230884557723"/>
         </scene>
-        <!--View Controller-->
+        <!--Test Table View Controller-->
         <scene sceneID="WGU-hk-R1d">
             <objects>
-                <viewController id="spI-oB-9fO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="spI-oB-9fO" customClass="TestTableViewController" customModule="OceanLife" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uTn-R7-fGn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

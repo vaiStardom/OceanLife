@@ -11,6 +11,8 @@
 		BA3900641DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */; };
 		BA3900651DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */; };
 		BA6320D91DB4E12F003DD4F0 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6320D81DB4E12F003DD4F0 /* TestTableViewController.swift */; };
+		BA6320DB1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6320DA1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib */; };
+		BA6320DD1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6320DC1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift */; };
 		BABC96481DB4BED100CC8AA2 /* OceanLifeSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */; };
 		BAD2537D1DB1D09E00603FBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */; };
 		BAD2537F1DB1D09E00603FBC /* OceanLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */; };
@@ -25,6 +27,8 @@
 		BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OceanLifeCollectionViewCell.swift; path = OceanLife/OceanLifeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OceanLifeCollectionViewCell.xib; path = OceanLife/OceanLifeCollectionViewCell.xib; sourceTree = "<group>"; };
 		BA6320D81DB4E12F003DD4F0 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTableViewController.swift; path = OceanLife/TestTableViewController.swift; sourceTree = "<group>"; };
+		BA6320DA1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OceanLifeDetailTableViewCell.xib; path = OceanLife/OceanLifeDetailTableViewCell.xib; sourceTree = "<group>"; };
+		BA6320DC1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OceanLifeDetailTableViewCell.swift; path = OceanLife/OceanLifeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OceanLifeSpecies.swift; sourceTree = "<group>"; };
 		BAD253791DB1D09E00603FBC /* OceanLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */,
+				BA6320DA1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -69,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */,
+				BA6320DC1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -82,6 +88,15 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		BA6320DE1DB5D56C003DD4F0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BAD253851DB1D09E00603FBC /* LaunchScreen.storyboard */,
+				BAD253801DB1D09E00603FBC /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		BAD253701DB1D09E00603FBC = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +105,7 @@
 				BAD2537B1DB1D09E00603FBC /* OceanLife */,
 				9B63209ABB76C420C8F31201 /* Pods */,
 				BAD2537A1DB1D09E00603FBC /* Products */,
+				BA6320DE1DB5D56C003DD4F0 /* Storyboards */,
 				BA6320D71DB4DFEF003DD4F0 /* View Controllers */,
 				BA1EEF4D1DB4A8F5000BD986 /* Xibs */,
 			);
@@ -109,8 +125,6 @@
 				BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */,
 				BAD253831DB1D09E00603FBC /* Assets.xcassets */,
 				BAD253881DB1D09E00603FBC /* Info.plist */,
-				BAD253851DB1D09E00603FBC /* LaunchScreen.storyboard */,
-				BAD253801DB1D09E00603FBC /* Main.storyboard */,
 				BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */,
 			);
 			path = OceanLife;
@@ -191,6 +205,7 @@
 				BA3900651DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib in Resources */,
 				BAD253871DB1D09E00603FBC /* LaunchScreen.storyboard in Resources */,
 				BAD253841DB1D09E00603FBC /* Assets.xcassets in Resources */,
+				BA6320DB1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib in Resources */,
 				BAD253821DB1D09E00603FBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAD2537F1DB1D09E00603FBC /* OceanLifeViewController.swift in Sources */,
+				BA6320DD1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift in Sources */,
 				BA6320D91DB4E12F003DD4F0 /* TestTableViewController.swift in Sources */,
 				BA3900641DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift in Sources */,
 				BAD2537D1DB1D09E00603FBC /* AppDelegate.swift in Sources */,
@@ -267,6 +283,7 @@
 				BAD253811DB1D09E00603FBC /* Base */,
 			);
 			name = Main.storyboard;
+			path = OceanLife;
 			sourceTree = "<group>";
 		};
 		BAD253851DB1D09E00603FBC /* LaunchScreen.storyboard */ = {
@@ -275,6 +292,7 @@
 				BAD253861DB1D09E00603FBC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = OceanLife;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

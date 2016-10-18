@@ -48,14 +48,14 @@ extension OceanLifeViewController {
             cellsIsOpen.append(false)
         }
     }
-//    fileprivate func getViewController() -> ExpandingTableViewController {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let toViewController: MasterpiecesTableViewController = storyboard.instantiateViewController()
-//        return toViewController
-//    }
-    fileprivate func configureNavBar(){
-        navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+    fileprivate func getViewController() -> ExpandingTableViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let toViewController: TestTableViewController = storyboard.instantiateViewController(withIdentifier: "TestTableViewController") as! TestTableViewController
+        return toViewController
     }
+//    fileprivate func configureNavBar(){
+//        navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+//    }
 }
 // MARK: Gesture
 extension OceanLifeViewController {
@@ -75,9 +75,9 @@ extension OceanLifeViewController {
         guard let cell = collectionView?.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell else {return}
         
         //double swipe up transition
-//        if cell.isOpened == true && sender.direction == .up {
-//            pushToViewController(getViewController())
-//        }
+        if cell.isOpened == true && sender.direction == .up {
+            pushToViewController(getViewController())
+        }
         let open = sender.direction == .up ? true : false
         cell.cellIsOpen(open)
         cellsIsOpen[(indexPath as NSIndexPath).row] = cell.isOpened
