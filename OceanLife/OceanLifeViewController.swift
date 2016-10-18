@@ -53,9 +53,6 @@ extension OceanLifeViewController {
         let toViewController: TestTableViewController = storyboard.instantiateViewController(withIdentifier: "TestTableViewController") as! TestTableViewController
         return toViewController
     }
-//    fileprivate func configureNavBar(){
-//        navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-//    }
 }
 // MARK: Gesture
 extension OceanLifeViewController {

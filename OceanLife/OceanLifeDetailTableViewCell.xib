@@ -9,17 +9,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OceanLifeDetailCell" id="mpv-is-4Ak" customClass="OceanLifeDetailTableViewCell" customModule="OceanLife" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="321" height="527"/>
+            <rect key="frame" x="0.0" y="0.0" width="321" height="378"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mpv-is-4Ak" id="bIj-nk-4mL">
-                <frame key="frameInset" width="321" height="526"/>
+                <frame key="frameInset" width="321" height="377.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M70-bG-wFt">
                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="321" id="5aM-pp-QtY"/>
-                            <constraint firstAttribute="height" constant="527" id="j5n-Zh-yXE"/>
+                            <constraint firstAttribute="height" constant="378" id="j5n-Zh-yXE"/>
                         </constraints>
                     </webView>
                 </subviews>

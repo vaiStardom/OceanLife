@@ -12,20 +12,16 @@ import UIKit
 class TestTableViewController: ExpandingTableViewController, UIGestureRecognizerDelegate {
 
     fileprivate var scrollOffSetY: CGFloat = 0
-    fileprivate var masterpieceIndex: Int?
+    fileprivate var oceanLifeIndex: Int?
 }
 
 // MARK: Lifecycle
 extension  TestTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureNavBar()
         configureTableView()
         addGestureToView(self.view)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
 }
 // MARK: TableView
@@ -38,12 +34,14 @@ extension  TestTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OceanLifeDetailCell") as! OceanLifeDetailTableViewCell
-        
-        let url = NSURL (string: "https://en.m.wikipedia.org/wiki/Caesio_teres");
-        let requestObj = NSURLRequest(url: url! as URL);
-        cell.oceanLifeDetailWebView.loadRequest(requestObj as URLRequest);
-        
+        cell.oceanLifeDetailsUrlString = "https://en.m.wikipedia.org/wiki/Caesio_teres"
         return cell
+    }
+}
+// MARK: Helper
+extension TestTableViewController {
+    fileprivate func configureNavBar(){
+        navigationItem.leftBarButtonItem?.image = navigationItem.leftBarButtonItem?.image!.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
     }
 }
 // MARK: Gesture
@@ -60,10 +58,16 @@ extension TestTableViewController {
     }
     @objc(gestureRecognizer:shouldReceiveTouch:) func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         let point = touch.location(in: self.view)
-        if point.y <= 240 && scrollOffSetY == 0 {
+        if point.y <= 190 && scrollOffSetY == 0 {
             return true
         }
         return false
+    }
+}
+// MARK: Actions
+extension TestTableViewController {
+    @IBAction func backButtonHandler(_ sender: AnyObject){
+        popTransitionAnimation()
     }
 }
 // MARK: UIScrollViewDelegate
