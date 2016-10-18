@@ -9,10 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XfI-v5-wrR" userLabel="Ocean Life Collection View Cell" customClass="OceanLifeCollectionViewCell" customModule="OceanLife" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="208" height="166"/>
+            <rect key="frame" x="0.0" y="0.0" width="166" height="208"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="208" height="166"/>
+                <rect key="frame" x="0.0" y="0.0" width="166" height="208"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NE1-0r-gCS" userLabel="Back Container View">
@@ -20,40 +20,41 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9h2-PZ-Lqc">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4Yu-GP-6lH"/>
-                                    <constraint firstAttribute="width" constant="192" id="aoU-Eg-hIe"/>
+                                    <constraint firstAttribute="width" constant="150" id="aoU-Eg-hIe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93401867151260376" green="0.72046905755996704" blue="0.72675466537475586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.60263901949999998" green="0.60275471209999998" blue="0.60261970760000005" alpha="0.25135778739999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="166" id="2XU-FA-VrE"/>
-                            <constraint firstAttribute="width" constant="208" id="4jI-Q6-aIf"/>
+                            <constraint firstAttribute="height" constant="208" id="2XU-FA-VrE"/>
+                            <constraint firstAttribute="width" constant="166" id="4jI-Q6-aIf"/>
                             <constraint firstItem="9h2-PZ-Lqc" firstAttribute="centerX" secondItem="NE1-0r-gCS" secondAttribute="centerX" id="OrQ-Cc-6fl"/>
-                            <constraint firstAttribute="bottom" secondItem="9h2-PZ-Lqc" secondAttribute="bottom" constant="8" id="ySE-hi-Xpe"/>
+                            <constraint firstAttribute="bottom" secondItem="9h2-PZ-Lqc" secondAttribute="bottom" constant="30" id="ySE-hi-Xpe"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="Front Container View">
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fTJ-zf-xu6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="166" id="Ntf-Ev-6iP"/>
-                                    <constraint firstAttribute="width" constant="208" id="fwP-dX-HyW"/>
+                                    <constraint firstAttribute="height" constant="208" id="Ntf-Ev-6iP"/>
+                                    <constraint firstAttribute="width" constant="166" id="fwP-dX-HyW"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OUp-27-yVM"/>
-                            <constraint firstAttribute="height" constant="166" id="a0n-7P-mFZ"/>
+                            <constraint firstAttribute="height" constant="208" id="a0n-7P-mFZ"/>
                             <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oMw-vh-8xp"/>
-                            <constraint firstAttribute="width" constant="208" id="vm2-ap-Pou"/>
+                            <constraint firstAttribute="width" constant="166" id="vm2-ap-Pou"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iN0-l3-epB" firstAttribute="centerY" secondItem="XfI-v5-wrR" secondAttribute="centerY" id="279-lB-e99"/>
                 <constraint firstItem="NE1-0r-gCS" firstAttribute="centerY" secondItem="XfI-v5-wrR" secondAttribute="centerY" id="4fh-qG-bSE"/>

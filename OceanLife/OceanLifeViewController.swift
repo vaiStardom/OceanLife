@@ -12,6 +12,7 @@ import UIKit
 class OceanLifeViewController: ExpandingViewController {
     
     fileprivate var cellsIsOpen = [Bool]()
+    
     var species: [OceanLifeSpecies] = [
         OceanLifeSpecies(name: "Batfish", pictureFile: "Batfish")
         ,OceanLifeSpecies(name: "Coral", pictureFile: "Coral")
@@ -25,8 +26,8 @@ class OceanLifeViewController: ExpandingViewController {
 // MARK: life cycle
 extension OceanLifeViewController{
     override func viewDidLoad() {
+        itemSize = CGSize(width: 166, height: 208)
         super.viewDidLoad()
-        itemSize = CGSize(width: 208, height: 166)
         registerCell()
         fillCellIsOpenArray()
         addGestureToView(collectionView!)
@@ -97,7 +98,7 @@ extension OceanLifeViewController {
         if cell.isOpened == false {
             cell.cellIsOpen(true)
         } else {
-//            pushToViewController(getViewController())
+            pushToViewController(getViewController())
 //            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton{
 //                rightButton.animationSelected(true)
 //            }

@@ -11,7 +11,6 @@ import UIKit
 
 class OceanLifeCollectionViewCell: BasePageCollectionCell {
     
-
     @IBOutlet weak var oceanLifeNameLabel: UILabel!
     @IBOutlet weak var oceanLifeImageView: UIImageView!
     
