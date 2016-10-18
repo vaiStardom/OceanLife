@@ -10,6 +10,7 @@
 		0D3F837D9DD4076FD85C6BCA /* Pods_OceanLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C86A421686DBA6EEAD0930 /* Pods_OceanLife.framework */; };
 		BA3900641DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */; };
 		BA3900651DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */; };
+		BA6320D91DB4E12F003DD4F0 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6320D81DB4E12F003DD4F0 /* TestTableViewController.swift */; };
 		BABC96481DB4BED100CC8AA2 /* OceanLifeSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */; };
 		BAD2537D1DB1D09E00603FBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */; };
 		BAD2537F1DB1D09E00603FBC /* OceanLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */; };
@@ -23,10 +24,11 @@
 		A3C86A421686DBA6EEAD0930 /* Pods_OceanLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OceanLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OceanLifeCollectionViewCell.swift; path = OceanLife/OceanLifeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OceanLifeCollectionViewCell.xib; path = OceanLife/OceanLifeCollectionViewCell.xib; sourceTree = "<group>"; };
+		BA6320D81DB4E12F003DD4F0 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestTableViewController.swift; path = OceanLife/TestTableViewController.swift; sourceTree = "<group>"; };
 		BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OceanLifeSpecies.swift; sourceTree = "<group>"; };
 		BAD253791DB1D09E00603FBC /* OceanLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanLifeViewController.swift; sourceTree = "<group>"; };
+		BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OceanLifeViewController.swift; path = OceanLife/OceanLifeViewController.swift; sourceTree = "<group>"; };
 		BAD253811DB1D09E00603FBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAD253831DB1D09E00603FBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAD253861DB1D09E00603FBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		BA6320D71DB4DFEF003DD4F0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */,
+				BA6320D81DB4E12F003DD4F0 /* TestTableViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		BAD253701DB1D09E00603FBC = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +90,7 @@
 				BAD2537B1DB1D09E00603FBC /* OceanLife */,
 				9B63209ABB76C420C8F31201 /* Pods */,
 				BAD2537A1DB1D09E00603FBC /* Products */,
+				BA6320D71DB4DFEF003DD4F0 /* View Controllers */,
 				BA1EEF4D1DB4A8F5000BD986 /* Xibs */,
 			);
 			sourceTree = "<group>";
@@ -99,7 +111,6 @@
 				BAD253881DB1D09E00603FBC /* Info.plist */,
 				BAD253851DB1D09E00603FBC /* LaunchScreen.storyboard */,
 				BAD253801DB1D09E00603FBC /* Main.storyboard */,
-				BAD2537E1DB1D09E00603FBC /* OceanLifeViewController.swift */,
 				BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies.swift */,
 			);
 			path = OceanLife;
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAD2537F1DB1D09E00603FBC /* OceanLifeViewController.swift in Sources */,
+				BA6320D91DB4E12F003DD4F0 /* TestTableViewController.swift in Sources */,
 				BA3900641DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift in Sources */,
 				BAD2537D1DB1D09E00603FBC /* AppDelegate.swift in Sources */,
 				BABC96481DB4BED100CC8AA2 /* OceanLifeSpecies.swift in Sources */,
