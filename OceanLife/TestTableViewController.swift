@@ -12,7 +12,10 @@ import UIKit
 class TestTableViewController: ExpandingTableViewController, UIGestureRecognizerDelegate {
 
     fileprivate var scrollOffSetY: CGFloat = 0
-    fileprivate var oceanLifeIndex: Int?
+    fileprivate var contentHeights : [CGFloat] = [0.0, 0.0]
+    
+    var oceanLifeIndex: Int?
+    
 }
 
 // MARK: Lifecycle
@@ -25,7 +28,7 @@ extension  TestTableViewController {
     }
 }
 // MARK: TableView
-extension  TestTableViewController {
+extension  TestTableViewController: UIWebViewDelegate {
     fileprivate func configureTableView(){
         tableView.register(UINib(nibName: "OceanLifeDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "OceanLifeDetailCell")
     }
@@ -34,8 +37,39 @@ extension  TestTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OceanLifeDetailCell") as! OceanLifeDetailTableViewCell
-        cell.oceanLifeDetailsUrlString = "https://en.m.wikipedia.org/wiki/Caesio_teres"
+//        let htmlHeight = contentHeights[indexPath.row]
+//        cell.oceanLifeDetailWebView?.tag = indexPath.row
+//        cell.oceanLifeDetailWebView?.delegate = self
+//        cell.oceanLifeDetailWebView?.loadRequest(NSURLRequest(url: NSURL(string: "https://en.m.wikipedia.org/wiki/Caesio_teres")! as URL) as URLRequest)
+//        cell.oceanLifeDetailWebView?.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
+//        cell.oceanLifeDetailWebView?.scrollView.isScrollEnabled = false
+//        cell.oceanLifeDetailWebView?.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: htmlHeight)
+        
+        
+        let web = UIWebView(frame: CGRect(x:0, y:0, width:320, height:378))
+        //web.loadHTMLString("im a <b>webview</b>", baseURL: nil)
+        //web.loadRequest(NSURLRequest(url: NSURL(string: "https://en.m.wikipedia.org/wiki/Caesio_teres")! as URL) as URLRequest)
+        web.loadRequest(NSURLRequest(url: NSURL(string: SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink)! as URL) as URLRequest)
+        web.isUserInteractionEnabled = true
+        cell.contentView.addSubview(web)
+
+
+        
         return cell
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView)
+    {
+        
+        if (contentHeights[webView.tag] == webView.scrollView.contentSize.height)
+        {
+            
+            return
+        }
+        webView.frame.size.height = 1
+        webView.frame.size = webView.sizeThatFits(CGSize.zero)
+        contentHeights[webView.tag] = webView.scrollView.contentSize.height
+        
+        tableView.reloadRows(at: [IndexPath(row: webView.tag, section: 0)], with: .automatic)
     }
 }
 // MARK: Helper

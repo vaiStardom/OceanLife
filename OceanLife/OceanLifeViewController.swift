@@ -10,18 +10,7 @@ import expanding_collection
 import UIKit
 
 class OceanLifeViewController: ExpandingViewController {
-    
     fileprivate var cellsIsOpen = [Bool]()
-    
-    var species: [OceanLifeSpecies] = [
-        OceanLifeSpecies(name: "Batfish", pictureFile: "Batfish")
-        ,OceanLifeSpecies(name: "Coral", pictureFile: "Coral")
-        ,OceanLifeSpecies(name: "Cowrie", pictureFile: "Cowrie")
-        ,OceanLifeSpecies(name: "Frogfish", pictureFile: "Frogfish")
-        ,OceanLifeSpecies(name: "Nudibranch", pictureFile: "Nudibranch")
-        ,OceanLifeSpecies(name: "Porcupinefish", pictureFile: "Porcupinefish")
-        ,OceanLifeSpecies(name: "ShrimpCoral", pictureFile: "ShrimpCoral")
-    ]
 }
 // MARK: life cycle
 extension OceanLifeViewController{
@@ -45,7 +34,7 @@ extension OceanLifeViewController {
         collectionView?.register(nib, forCellWithReuseIdentifier: String(describing: OceanLifeCollectionViewCell.self))
     }
     fileprivate func fillCellIsOpenArray(){
-        for _ in species {
+        for _ in SPECIES {
             cellsIsOpen.append(false)
         }
     }
@@ -74,6 +63,7 @@ extension OceanLifeViewController {
         
         //double swipe up transition
         if cell.isOpened == true && sender.direction == .up {
+            OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex = cell.oceanLifeIndex!
             pushToViewController(getViewController())
         }
         let open = sender.direction == .up ? true : false
@@ -86,12 +76,12 @@ extension OceanLifeViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         super.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         guard let cell = cell as? OceanLifeCollectionViewCell else { return }
-        let index = (indexPath as NSIndexPath).row % species.count
-        let specie = species[index]
-        
+        let index = (indexPath as NSIndexPath).row % SPECIES.count
+        let specie = SPECIES[index]
         let oceanLifeImage = UIImage(named: specie.givenPictureFile)
         cell.oceanLifeImageView.image = oceanLifeImage
         cell.oceanLifeNameLabel.text = specie.givenName
+        cell.oceanLifeIndex = index
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell , currentIndex == (indexPath as NSIndexPath).row else {return}
@@ -108,7 +98,7 @@ extension OceanLifeViewController {
 // MARK: UICollectionViewDataSource
 extension OceanLifeViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return species.count
+        return SPECIES.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: OceanLifeCollectionViewCell.self), for: indexPath)

@@ -22,10 +22,21 @@
                             <constraint firstAttribute="height" constant="378" id="j5n-Zh-yXE"/>
                         </constraints>
                     </webView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d96-0c-VJi">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="GeX-uZ-MxP"/>
+                            <constraint firstAttribute="width" constant="42" id="fis-wC-Eab"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="M70-bG-wFt" firstAttribute="centerY" secondItem="bIj-nk-4mL" secondAttribute="centerY" id="Ogq-Uh-z5r"/>
+                    <constraint firstItem="d96-0c-VJi" firstAttribute="centerX" secondItem="bIj-nk-4mL" secondAttribute="centerX" id="ZvF-HK-d7B"/>
                     <constraint firstItem="M70-bG-wFt" firstAttribute="centerX" secondItem="bIj-nk-4mL" secondAttribute="centerX" id="jh4-uu-mMH"/>
+                    <constraint firstItem="d96-0c-VJi" firstAttribute="centerY" secondItem="bIj-nk-4mL" secondAttribute="centerY" id="tsE-5J-anO"/>
                 </constraints>
             </tableViewCellContentView>
         </tableViewCell>

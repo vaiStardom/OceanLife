@@ -9,10 +9,12 @@
 import expanding_collection
 import UIKit
 
-class OceanLifeCollectionViewCell: BasePageCollectionCell {
+class OceanLifeCollectionViewCell: BasePageCollectionCell, UIWebViewDelegate {
     
     @IBOutlet weak var oceanLifeNameLabel: UILabel!
     @IBOutlet weak var oceanLifeImageView: UIImageView!
+    
+    var oceanLifeIndex: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
