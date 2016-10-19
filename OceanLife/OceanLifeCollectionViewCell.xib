@@ -43,11 +43,20 @@
                                     <constraint firstAttribute="width" constant="166" id="fwP-dX-HyW"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wvu-Ho-scK">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="Yqs-Li-Ug7"/>
+                                    <constraint firstAttribute="height" constant="37" id="iGS-oV-kB5"/>
+                                </constraints>
+                                <color key="color" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wvu-Ho-scK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9NR-8X-Ajs"/>
                             <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OUp-27-yVM"/>
                             <constraint firstAttribute="height" constant="208" id="a0n-7P-mFZ"/>
+                            <constraint firstItem="wvu-Ho-scK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ivq-Ra-wUq"/>
                             <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oMw-vh-8xp"/>
                             <constraint firstAttribute="width" constant="166" id="vm2-ap-Pou"/>
                         </constraints>
@@ -63,6 +72,7 @@
             </constraints>
             <size key="customSize" width="211" height="170"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="wvu-Ho-scK" id="FY5-FQ-wC4"/>
                 <outlet property="backConstraintY" destination="4fh-qG-bSE" id="rwA-5C-PmA"/>
                 <outlet property="backContainerView" destination="NE1-0r-gCS" id="cHZ-Fp-h5Z"/>
                 <outlet property="frontConstraintY" destination="279-lB-e99" id="dpa-kH-QTO"/>

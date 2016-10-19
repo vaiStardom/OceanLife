@@ -9,15 +9,29 @@
 import expanding_collection
 import UIKit
 
-class OceanLifeCollectionViewCell: BasePageCollectionCell, UIWebViewDelegate {
+class OceanLifeCollectionViewCell: BasePageCollectionCell{
     
     @IBOutlet weak var oceanLifeNameLabel: UILabel!
     @IBOutlet weak var oceanLifeImageView: UIImageView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var oceanLifeIndex: Int?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+}
+// MARK: WebViewManagement
+extension OceanLifeCollectionViewCell {
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview != nil {
+            
+            
+            
+            activityIndicatorView.superview?.bringSubview(toFront: activityIndicatorView)
+        }
+    }
+    func webViewDidStartLoad(_ webView : UIWebView){
+        activityIndicatorView.startAnimating()
+    }
+    func webViewDidFinishLoad(_ webView : UIWebView){
+        activityIndicatorView.stopAnimating()
     }
 }

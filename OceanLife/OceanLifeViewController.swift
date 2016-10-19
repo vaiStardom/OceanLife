@@ -5,7 +5,8 @@
 //  Created by Paul Addy on 2016-10-15.
 //  Copyright © 2016 Paul Addy. All rights reserved.
 //
-
+// endangered species rating website: http://www.iucnredlist.org/details/155097/0
+//
 import expanding_collection
 import UIKit
 
@@ -45,7 +46,6 @@ extension OceanLifeViewController {
         let gestureUp = Init(UISwipeGestureRecognizer(target: self, action: #selector(OceanLifeViewController.swipeHandler(_:)))) {
             $0.direction = .up
         }
-        
         let gestureDown = Init(UISwipeGestureRecognizer(target: self, action: #selector(OceanLifeViewController.swipeHandler(_:)))) {
             $0.direction = .down
         }

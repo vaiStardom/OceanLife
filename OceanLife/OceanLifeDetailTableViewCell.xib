@@ -15,30 +15,16 @@
                 <frame key="frameInset" width="321" height="377.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M70-bG-wFt">
-                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="321" id="5aM-pp-QtY"/>
-                            <constraint firstAttribute="height" constant="378" id="j5n-Zh-yXE"/>
-                        </constraints>
-                    </webView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d96-0c-VJi">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="GeX-uZ-MxP"/>
-                            <constraint firstAttribute="width" constant="42" id="fis-wC-Eab"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-1O-9DS">
+                        <frame key="frameInset" minX="142" minY="170" width="37" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="color" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </activityIndicatorView>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="M70-bG-wFt" firstAttribute="centerY" secondItem="bIj-nk-4mL" secondAttribute="centerY" id="Ogq-Uh-z5r"/>
-                    <constraint firstItem="d96-0c-VJi" firstAttribute="centerX" secondItem="bIj-nk-4mL" secondAttribute="centerX" id="ZvF-HK-d7B"/>
-                    <constraint firstItem="M70-bG-wFt" firstAttribute="centerX" secondItem="bIj-nk-4mL" secondAttribute="centerX" id="jh4-uu-mMH"/>
-                    <constraint firstItem="d96-0c-VJi" firstAttribute="centerY" secondItem="bIj-nk-4mL" secondAttribute="centerY" id="tsE-5J-anO"/>
-                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="activityIndicatorView" destination="iHy-1O-9DS" id="ELo-6i-zyF"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

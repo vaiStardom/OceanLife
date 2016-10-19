@@ -10,12 +10,8 @@ import expanding_collection
 import UIKit
 
 class TestTableViewController: ExpandingTableViewController, UIGestureRecognizerDelegate {
-
     fileprivate var scrollOffSetY: CGFloat = 0
-    //fileprivate var contentHeights : [CGFloat] = [0.0, 0.0]
-    
     var oceanLifeIndex: Int?
-    
 }
 // MARK: Lifecycle
 extension  TestTableViewController {
@@ -36,10 +32,12 @@ extension  TestTableViewController: UIWebViewDelegate {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OceanLifeDetailCell") as! OceanLifeDetailTableViewCell
-        let web = UIWebView(frame: CGRect(x:0, y:0, width:320, height:378))
-        web.loadRequest(NSURLRequest(url: NSURL(string: SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink)! as URL) as URLRequest)
-        web.isUserInteractionEnabled = true
-        cell.contentView.addSubview(web)
+        
+//        let web = UIWebView(frame: CGRect(x:0, y:0, width:320, height:378))
+//        web.loadRequest(NSURLRequest(url: NSURL(string: SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink)! as URL) as URLRequest)
+//        web.isUserInteractionEnabled = true
+//        cell.contentView.addSubview(web)
+        cell.url = SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink
         return cell
     }
 }
