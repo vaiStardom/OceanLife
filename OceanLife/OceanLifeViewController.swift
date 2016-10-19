@@ -21,11 +21,6 @@ extension OceanLifeViewController{
         fillCellIsOpenArray()
         addGestureToView(collectionView!)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 // MARK: Helpers
 extension OceanLifeViewController {
@@ -89,9 +84,6 @@ extension OceanLifeViewController {
             cell.cellIsOpen(true)
         } else {
             pushToViewController(getViewController())
-//            if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton{
-//                rightButton.animationSelected(true)
-//            }
         }
     }
 }
@@ -104,5 +96,3 @@ extension OceanLifeViewController {
         return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: OceanLifeCollectionViewCell.self), for: indexPath)
     }
 }
-
-
