@@ -23,15 +23,22 @@ extension OceanLifeCollectionViewCell {
         super.didMoveToSuperview()
         if superview != nil {
             
+            //let url = URL(string: SPECIES[1].givenCellImageLink)
+//            let url = URL(string: SPECIES[oceanLifeIndex!].givenCellImageLink)
+//            let data = NSData(contentsOf: url!)
+//            let image = UIImage(data: data as! Data)
+//            oceanLifeImageView.image = image
+//            oceanLifeImageView.contentMode = .scaleAspectFit
             
             
-            activityIndicatorView.superview?.bringSubview(toFront: activityIndicatorView)
+            //activityIndicatorView.superview?.bringSubview(toFront: activityIndicatorView)
         }
     }
-    func webViewDidStartLoad(_ webView : UIWebView){
-        activityIndicatorView.startAnimating()
-    }
-    func webViewDidFinishLoad(_ webView : UIWebView){
-        activityIndicatorView.stopAnimating()
-    }
+    
+//    func webViewDidStartLoad(_ webView : UIWebView){
+//        activityIndicatorView.startAnimating()
+//    }
+//    func webViewDidFinishLoad(_ webView : UIWebView){
+//        activityIndicatorView.stopAnimating()
+//    }
 }

@@ -6,12 +6,18 @@
 //  Copyright © 2016 Paul Addy. All rights reserved.
 //
 // endangered species rating website: http://www.iucnredlist.org/details/155097/0
-//
+// encyclopedia: http://eol.org/pages/1012924/overview
+
 import expanding_collection
 import UIKit
 
 class OceanLifeViewController: ExpandingViewController {
     fileprivate var cellsIsOpen = [Bool]()
+    
+    var task: URLSessionDownloadTask!
+    var session: URLSession!
+    var cache: NSCache<AnyObject, AnyObject>!
+    var tableData: [AnyObject]!
 }
 // MARK: life cycle
 extension OceanLifeViewController{
@@ -21,6 +27,13 @@ extension OceanLifeViewController{
         registerCell()
         fillCellIsOpenArray()
         addGestureToView(collectionView!)
+        
+        session = URLSession.shared
+        task = URLSessionDownloadTask()
+        
+        self.tableData = []
+        self.cache = NSCache()
+
     }
 }
 // MARK: Helpers
@@ -73,10 +86,30 @@ extension OceanLifeViewController {
         guard let cell = cell as? OceanLifeCollectionViewCell else { return }
         let index = (indexPath as NSIndexPath).row % SPECIES.count
         let specie = SPECIES[index]
-        let oceanLifeImage = UIImage(named: specie.givenPictureFile)
-        cell.oceanLifeImageView.image = oceanLifeImage
+        
+        let url = URL(string: specie.givenCellImageLink)
+        cell.oceanLifeImageView.contentMode = .scaleAspectFit
+        cell.oceanLifeImageView.image = UIImage(named: "placeholder")
         cell.oceanLifeNameLabel.text = specie.givenName
         cell.oceanLifeIndex = index
+
+        if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil ) {
+            print("Cached image used, no need to download it")
+            cell.oceanLifeImageView.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
+        } else {
+            task = session.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
+                if let data = try? Data(contentsOf: url!){
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        if let updateCell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell {
+                            let img: UIImage! = UIImage(data: data)
+                            updateCell.oceanLifeImageView?.image = img
+                            self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
+                        }
+                    })
+                }
+            })
+            task.resume()
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell , currentIndex == (indexPath as NSIndexPath).row else {return}
