@@ -97,12 +97,14 @@ extension OceanLifeViewController {
             print("Cached image used, no need to download it")
             cell.oceanLifeImageView.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
         } else {
+            cell.activityIndicatorView.startAnimating()
             task = session.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
                 if let data = try? Data(contentsOf: url!){
                     DispatchQueue.main.async(execute: { () -> Void in
                         if let updateCell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell {
                             let img: UIImage! = UIImage(data: data)
                             updateCell.oceanLifeImageView?.image = img
+                            updateCell.activityIndicatorView.stopAnimating()
                             self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
                         }
                     })
