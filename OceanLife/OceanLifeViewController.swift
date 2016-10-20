@@ -17,23 +17,21 @@ class OceanLifeViewController: ExpandingViewController {
     var task: URLSessionDownloadTask!
     var session: URLSession!
     var cache: NSCache<AnyObject, AnyObject>!
-    var tableData: [AnyObject]!
 }
 // MARK: life cycle
 extension OceanLifeViewController{
     override func viewDidLoad() {
         itemSize = CGSize(width: 166, height: 208)
+        
         super.viewDidLoad()
+        
         registerCell()
         fillCellIsOpenArray()
         addGestureToView(collectionView!)
         
         session = URLSession.shared
         task = URLSessionDownloadTask()
-        
-        self.tableData = []
         self.cache = NSCache()
-
     }
 }
 // MARK: Helpers
@@ -105,6 +103,9 @@ extension OceanLifeViewController {
                             let img: UIImage! = UIImage(data: data)
                             updateCell.oceanLifeImageView?.image = img
                             updateCell.activityIndicatorView.stopAnimating()
+                            //ToDo: save the image file path in the OceanLifeSpecies object
+                            //ToDo: serializer the OceanLifeSpecies array to disk
+                            //ToDo: check whether this OceanLifeSpecies already has a saved file on dick before fetching it from the internet
                             self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
                         }
                     })
