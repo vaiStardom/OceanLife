@@ -37,7 +37,7 @@ extension  TestTableViewController: UIWebViewDelegate {
 //        web.loadRequest(NSURLRequest(url: NSURL(string: SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink)! as URL) as URLRequest)
 //        web.isUserInteractionEnabled = true
 //        cell.contentView.addSubview(web)
-        cell.url = SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink
+        cell.url = OCEANLIFESPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].wikipediaLink
         return cell
     }
 }

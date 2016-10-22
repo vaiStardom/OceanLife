@@ -8,8 +8,11 @@
 // endangered species rating website: http://www.iucnredlist.org/details/155097/0
 // encyclopedia: http://eol.org/pages/1012924/overview
 
+import CoreData
 import expanding_collection
 import UIKit
+
+var OCEANLIFESPECIES: [Species] = []
 
 class OceanLifeViewController: ExpandingViewController {
     fileprivate var cellsIsOpen = [Bool]()
@@ -17,6 +20,7 @@ class OceanLifeViewController: ExpandingViewController {
     var task: URLSessionDownloadTask!
     var session: URLSession!
     var cache: NSCache<AnyObject, AnyObject>!
+    
 }
 // MARK: life cycle
 extension OceanLifeViewController{
@@ -24,6 +28,16 @@ extension OceanLifeViewController{
         itemSize = CGSize(width: 166, height: 208)
         
         super.viewDidLoad()
+        
+        //empty data
+        OceanLifeSpecies.emptySpecies()
+        
+        //Load initial data
+        for item in dataToLoad {
+            OceanLifeSpecies.updateSpecies(species: item)
+        }
+        
+        OCEANLIFESPECIES = OceanLifeSpecies.getSpecies()
         
         registerCell()
         fillCellIsOpenArray()
@@ -41,7 +55,8 @@ extension OceanLifeViewController {
         collectionView?.register(nib, forCellWithReuseIdentifier: String(describing: OceanLifeCollectionViewCell.self))
     }
     fileprivate func fillCellIsOpenArray(){
-        for _ in SPECIES {
+        //for _ in SPECIES {
+        for _ in OCEANLIFESPECIES {
             cellsIsOpen.append(false)
         }
     }
@@ -82,19 +97,17 @@ extension OceanLifeViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         super.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         guard let cell = cell as? OceanLifeCollectionViewCell else { return }
-        let index = (indexPath as NSIndexPath).row % SPECIES.count
-        let specie = SPECIES[index]
+        let index = (indexPath as NSIndexPath).row % OCEANLIFESPECIES.count
+        let specie = OCEANLIFESPECIES[index]
         
-        let url = URL(string: specie.givenCellImageLink)
-        cell.oceanLifeImageView.contentMode = .scaleAspectFit
-        cell.oceanLifeImageView.image = UIImage(named: "placeholder")
-        cell.oceanLifeNameLabel.text = specie.givenName
-        cell.oceanLifeIndex = index
-
-        if (self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) != nil ) {
-            print("Cached image used, no need to download it")
-            cell.oceanLifeImageView.image = self.cache.object(forKey: (indexPath as NSIndexPath).row as AnyObject) as? UIImage
+        //Check if there is an image saved to core data
+        if specie.cellImage != nil {
+            cell.oceanLifeImageView.image = UIImage(data: specie.cellImage as! Data)
+            print("Core data image used, no need to download it")
         } else {
+            cell.oceanLifeImageView.image = UIImage(named: "placeholder")
+            
+            let url = URL(string: specie.cellImageLink!)
             cell.activityIndicatorView.startAnimating()
             task = session.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
                 if let data = try? Data(contentsOf: url!){
@@ -103,9 +116,7 @@ extension OceanLifeViewController {
                             let img: UIImage! = UIImage(data: data)
                             updateCell.oceanLifeImageView?.image = img
                             updateCell.activityIndicatorView.stopAnimating()
-                            //ToDo: save the image file path in the OceanLifeSpecies object
-                            //ToDo: serializer the OceanLifeSpecies array to disk
-                            //ToDo: check whether this OceanLifeSpecies already has a saved file on dick before fetching it from the internet
+                            //ToDo: save the image to core data
                             self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
                         }
                     })
@@ -113,6 +124,9 @@ extension OceanLifeViewController {
             })
             task.resume()
         }
+        cell.oceanLifeImageView.contentMode = .scaleAspectFit
+        cell.oceanLifeNameLabel.text = specie.commonName
+        cell.oceanLifeIndex = index
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell , currentIndex == (indexPath as NSIndexPath).row else {return}
@@ -126,7 +140,7 @@ extension OceanLifeViewController {
 // MARK: UICollectionViewDataSource
 extension OceanLifeViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SPECIES.count
+        return OCEANLIFESPECIES.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: OceanLifeCollectionViewCell.self), for: indexPath)
