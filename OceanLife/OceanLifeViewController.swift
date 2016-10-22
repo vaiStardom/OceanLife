@@ -30,11 +30,13 @@ extension OceanLifeViewController{
         super.viewDidLoad()
         
         //empty data
-        OceanLifeSpecies.emptySpecies()
+        //OceanLifeSpecies.emptySpecies()
         
         //Load initial data
         for item in dataToLoad {
-            OceanLifeSpecies.updateSpecies(species: item)
+            if OceanLifeSpecies.isSpecieExist(latinName: item.givenLatinName) == false {
+                OceanLifeSpecies.updateSpecies(species: item)
+            }
         }
         
         OCEANLIFESPECIES = OceanLifeSpecies.getSpecies()
@@ -106,7 +108,6 @@ extension OceanLifeViewController {
             print("Core data image used, no need to download it")
         } else {
             cell.oceanLifeImageView.image = UIImage(named: "placeholder")
-            
             let url = URL(string: specie.cellImageLink!)
             cell.activityIndicatorView.startAnimating()
             task = session.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
@@ -117,6 +118,8 @@ extension OceanLifeViewController {
                             updateCell.oceanLifeImageView?.image = img
                             updateCell.activityIndicatorView.stopAnimating()
                             //ToDo: save the image to core data
+                            specie.cellImage = UIImagePNGRepresentation(img)! as NSData?
+                            OceanLifeSpecies.updateOceanSpecieCellImage(species: specie)
                             self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
                         }
                     })

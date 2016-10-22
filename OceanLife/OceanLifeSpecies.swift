@@ -114,7 +114,7 @@ class OceanLifeSpecies {
                 imagePath = newValue
             } else {
                 imagePath = nil
-            }   
+            }
         }
     }
     var givenLatinName: String {
@@ -194,16 +194,53 @@ class OceanLifeSpecies {
         }
     }
     
-    static func searchOceanSpecies(latinName: String) throws -> [Species]?{
+    static func updateOceanSpecieCellImage(species: Species) {
         let context = getContext()
-        let searchRequest: NSFetchRequest<Species> = Species.fetchRequest()
-        searchRequest.predicate = NSPredicate(format: "latinName == %@ ", argumentArray: [latinName])
+        let predicate = NSPredicate(format: "latinName == %@ ", argumentArray: [species.latinName])
+        let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
+        var fetchResults: [Species] = []
+        
+        fetchRequest.predicate = predicate
+
         do {
-            return try context.fetch(searchRequest)
-        } catch {
-            print("Somothing went wrong")
-            return nil
+            fetchResults = try context.fetch(fetchRequest)
+            var cellImage: Data? = nil
+            cellImage = (species.cellImage != nil ? species.cellImage! as Data : nil)
+            fetchResults.first?.cellImage = cellImage as NSData?
+            print("Updated cell image of \(species.commonName) specie")
+        } catch  {
+            print("Error updating cell image of \(species.commonName) specie")
         }
+        
+        do {
+            try context.save()
+            print("Saved cell image of \(species.commonName) specie")
+        } catch  {
+            print("Error saving cell image of \(species.commonName) specie")
+        }
+    }
+    
+    static func isSpecieExist(latinName: String) -> Bool? {
+        let context = getContext()
+        let predicate = NSPredicate(format: "latinName == %@ ", argumentArray: [latinName])
+        let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
+        var fetchResults: [Species] = []
+        fetchRequest.predicate = predicate
+        var exists: Bool? = false
+        
+        do {
+            fetchResults = try context.fetch(fetchRequest)
+            if fetchResults.count > 0 {
+                print("Species \(fetchResults.first?.commonName) exists.")
+                exists = true
+            } else {
+                print("Species \(fetchResults.first?.commonName) does not exists.")
+                exists =  false
+            }
+        } catch  {
+            print("Error looking for \(latinName) specie")
+        }
+        return exists
     }
     
     init(cellImage: UIImage?, cellImageLink: String, commonName: String, imageFile: String, imagePath: String?, latinName: String, wikipediaLink: String) {
