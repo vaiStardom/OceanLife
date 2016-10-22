@@ -117,10 +117,9 @@ extension OceanLifeViewController {
                             let img: UIImage! = UIImage(data: data)
                             updateCell.oceanLifeImageView?.image = img
                             updateCell.activityIndicatorView.stopAnimating()
-                            //ToDo: save the image to core data
                             specie.cellImage = UIImagePNGRepresentation(img)! as NSData?
                             OceanLifeSpecies.updateOceanSpecieCellImage(species: specie)
-                            self.cache.setObject(img, forKey: (indexPath as NSIndexPath).row as AnyObject)
+                            print("Had to dowload cell image from the web.")
                         }
                     })
                 }
