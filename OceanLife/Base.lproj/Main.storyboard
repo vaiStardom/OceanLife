@@ -19,8 +19,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sSu-3P-1ms"/>
+                    <navigationItem key="navigationItem" id="sSu-3P-1ms">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="hEz-YZ-dir">
+                            <rect key="frame" x="8" y="6" width="304" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqo-Lv-1aC">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="vqo-Lv-1aC" firstAttribute="leading" secondItem="hEz-YZ-dir" secondAttribute="leading" constant="8" id="8VQ-gg-Hpn"/>
+                                <constraint firstAttribute="trailing" secondItem="vqo-Lv-1aC" secondAttribute="trailing" constant="8" id="QgP-qp-FUz"/>
+                                <constraint firstItem="vqo-Lv-1aC" firstAttribute="top" secondItem="hEz-YZ-dir" secondAttribute="top" constant="6" id="Rhb-cP-Kfi"/>
+                                <constraint firstAttribute="bottom" secondItem="vqo-Lv-1aC" secondAttribute="bottom" constant="6" id="WsA-cy-qHP"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
                     <connections>
+                        <outlet property="oceanLifeTitleLable" destination="vqo-Lv-1aC" id="2YI-fi-01T"/>
                         <segue destination="Q1T-xa-19X" kind="show" identifier="WelcomeToCorals" id="DYt-mh-kr1"/>
                         <segue destination="CDw-BI-bOZ" kind="show" identifier="WelcomeToButterfly" id="TSb-3f-hzu"/>
                         <segue destination="sYN-JS-Lcb" kind="show" identifier="WelcomeToBenthic" id="kuM-zh-7ZU"/>
@@ -31,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="881" y="135"/>
+            <point key="canvasLocation" x="879.375" y="134.1549295774648"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Rbu-iq-sY1">

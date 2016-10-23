@@ -17,48 +17,62 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NE1-0r-gCS" userLabel="Back Container View">
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="3DV-XQ-ugv">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9h2-PZ-Lqc">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4Yu-GP-6lH"/>
                                     <constraint firstAttribute="width" constant="150" id="aoU-Eg-hIe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.60263901949999998" green="0.60275471209999998" blue="0.60261970760000005" alpha="0.25135778739999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="208" id="2XU-FA-VrE"/>
                             <constraint firstAttribute="width" constant="166" id="4jI-Q6-aIf"/>
+                            <constraint firstItem="3DV-XQ-ugv" firstAttribute="top" secondItem="NE1-0r-gCS" secondAttribute="top" id="K9b-Fp-2s0"/>
                             <constraint firstItem="9h2-PZ-Lqc" firstAttribute="centerX" secondItem="NE1-0r-gCS" secondAttribute="centerX" id="OrQ-Cc-6fl"/>
+                            <constraint firstItem="3DV-XQ-ugv" firstAttribute="leading" secondItem="NE1-0r-gCS" secondAttribute="leading" id="UJQ-9k-5pu"/>
+                            <constraint firstAttribute="trailing" secondItem="3DV-XQ-ugv" secondAttribute="trailing" id="dKk-1w-QME"/>
                             <constraint firstAttribute="bottom" secondItem="9h2-PZ-Lqc" secondAttribute="bottom" constant="30" id="ySE-hi-Xpe"/>
+                            <constraint firstAttribute="bottom" secondItem="3DV-XQ-ugv" secondAttribute="bottom" id="zL6-tv-7FG"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="Front Container View">
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fTJ-zf-xu6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="3rc-dm-3Ch">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="208" id="Ntf-Ev-6iP"/>
-                                    <constraint firstAttribute="width" constant="166" id="fwP-dX-HyW"/>
+                                    <constraint firstAttribute="width" constant="166" id="3Wf-wb-38n"/>
+                                    <constraint firstAttribute="height" constant="208" id="The-jf-rC2"/>
                                 </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fTJ-zf-xu6">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wvu-Ho-scK">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="Yqs-Li-Ug7"/>
                                     <constraint firstAttribute="height" constant="37" id="iGS-oV-kB5"/>
                                 </constraints>
-                                <color key="color" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="fTJ-zf-xu6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Xp-e4-BiT"/>
+                            <constraint firstItem="3rc-dm-3Ch" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9Hc-rz-xkI"/>
                             <constraint firstItem="wvu-Ho-scK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9NR-8X-Ajs"/>
-                            <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OUp-27-yVM"/>
+                            <constraint firstItem="3rc-dm-3Ch" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="M96-Z8-6Xy"/>
+                            <constraint firstAttribute="trailing" secondItem="fTJ-zf-xu6" secondAttribute="trailing" id="SgC-CY-ItF"/>
                             <constraint firstAttribute="height" constant="208" id="a0n-7P-mFZ"/>
                             <constraint firstItem="wvu-Ho-scK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ivq-Ra-wUq"/>
-                            <constraint firstItem="fTJ-zf-xu6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oMw-vh-8xp"/>
+                            <constraint firstAttribute="bottom" secondItem="fTJ-zf-xu6" secondAttribute="bottom" id="m4e-WD-Ly8"/>
                             <constraint firstAttribute="width" constant="166" id="vm2-ap-Pou"/>
+                            <constraint firstItem="fTJ-zf-xu6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xIF-l8-NUl"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -83,4 +97,7 @@
             <point key="canvasLocation" x="-341" y="-159"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="CellBackground" width="248" height="262"/>
+    </resources>
 </document>

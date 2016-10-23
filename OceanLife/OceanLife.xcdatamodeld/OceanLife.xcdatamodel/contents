@@ -4,12 +4,10 @@
         <attribute name="cellImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="cellImageLink" attributeType="String" syncable="YES"/>
         <attribute name="commonName" attributeType="String" syncable="YES"/>
-        <attribute name="imageFile" attributeType="String" syncable="YES"/>
-        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latinName" attributeType="String" syncable="YES"/>
+        <attribute name="taxonomy" attributeType="String" syncable="YES"/>
         <attribute name="wikipediaLink" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Species" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Species" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

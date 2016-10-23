@@ -13,59 +13,51 @@ import UIKit
 var dataToLoad: [OceanLifeSpecies] = [
     OceanLifeSpecies(
         cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2014/10/04/08/08575_orig.jpg"
-        , commonName: "Batfish"
-        , imageFile: "Batfish"
-        , imagePath: nil
-        , latinName: "Ephippidae"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Ephippidae")
-    , OceanLifeSpecies(
-        cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
         , commonName: "Coral"
-        , imageFile: "Coral"
-        , imagePath: nil
-        , latinName: "Zoophyta"
+        , taxonomy: "Corals"
         , wikipediaLink: "https://en.wikipedia.org/wiki/Coral")
     , OceanLifeSpecies(
         cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2011/12/27/01/38699_orig.jpg"
-        , commonName: "Cowrie"
-        , imageFile: "Cowrie"
-        , imagePath: nil
-        , latinName: "Cypraeidae"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Cypraeidae")
+        , cellImageLink: "http://media.eol.org/content/2015/07/03/10/39814_orig.jpg"
+        , commonName: "Butterflyfish"
+        , taxonomy: "Chaetodontidae"
+        , wikipediaLink: "https://en.wikipedia.org/wiki/Butterflyfish")
     , OceanLifeSpecies(
         cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2009/05/21/16/55036_orig.jpg"
-        , commonName: "Frogfish"
-        , imageFile: "Frogfish"
-        , imagePath: nil
-        , latinName: "Lophiiformes"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Anglerfish")
+        , cellImageLink: "http://media.eol.org/content/2009/05/21/16/56747_orig.jpg"
+        , commonName: "Benthic Predatory"
+        , taxonomy: "Benthic Predatory"
+        , wikipediaLink: "https://en.wikipedia.org/wiki/Wrasse")
+    , OceanLifeSpecies(
+        cellImage: nil
+        , cellImageLink: "http://media.eol.org/content/2014/10/09/10/66013_orig.jpg"
+        , commonName: "Reef Herbivorous"
+        , taxonomy: "Reef Herbivorous"
+        , wikipediaLink: "https://en.wikipedia.org/wiki/Coral_reef_fish#Herbivores")
+    , OceanLifeSpecies(
+        cellImage: nil
+        , cellImageLink: "http://media.eol.org/content/2016/07/21/01/30824_orig.jpg"
+        , commonName: "Pelagic"
+        , taxonomy: "Pelagic"
+        , wikipediaLink: "https://en.wikipedia.org/wiki/Pelagic_fish")
     , OceanLifeSpecies(
         cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2011/10/14/15/97777_orig.jpg"
         , commonName: "Nudibranch"
-        , imageFile: "Nudibranch"
-        , imagePath: nil
-        , latinName: "Nudibranchia"
+        , taxonomy: "Nudibranchia"
         , wikipediaLink: "https://en.wikipedia.org/wiki/Nudibranch")
     , OceanLifeSpecies(
         cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2009/05/19/14/97207_orig.jpg"
         , commonName: "Porcupinefish"
-        , imageFile: "Porcupinefish"
-        , imagePath: nil
-        , latinName: "Diodon antennatus"
+        , taxonomy: "Diodon antennatus"
         , wikipediaLink: "https://en.wikipedia.org/wiki/Porcupinefish")
     , OceanLifeSpecies(
         cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/24/23/62748_orig.jpg"
         , commonName: "ShrimpCoral"
-        , imageFile: "ShrimpCoral"
-        , imagePath: nil
-        , latinName: "Conical Spider Crab"
+        , taxonomy: "Conical Spider Crab"
         , wikipediaLink: "https://nl.wikipedia.org/wiki/Xenocarcinus_tuberculatus")
 ]
 
@@ -74,9 +66,7 @@ class OceanLifeSpecies {
     fileprivate var cellImage: UIImage?
     fileprivate var cellImageLink: String?
     fileprivate var commonName: String?
-    fileprivate var imageFile: String?
-    fileprivate var imagePath: String?
-    fileprivate var latinName: String?
+    fileprivate var taxonomy: String?
     fileprivate var wikipediaLink: String?
     
     var givenCellImage: UIImage? {
@@ -101,26 +91,10 @@ class OceanLifeSpecies {
             commonName = newValue
         }
     }
-    var givenImageFile: String {
-        get { return imageFile! }
+    var givenTaxonomy: String {
+        get { return taxonomy! }
         set {
-            imageFile = newValue
-        }
-    }
-    var givenImagePath: String? {
-        get { return imagePath! }
-        set {
-            if newValue != nil {
-                imagePath = newValue
-            } else {
-                imagePath = nil
-            }
-        }
-    }
-    var givenLatinName: String {
-        get { return latinName! }
-        set {
-            latinName = newValue
+            taxonomy = newValue
         }
     }
     var givenWikipediaLink: String {
@@ -129,7 +103,13 @@ class OceanLifeSpecies {
             wikipediaLink = newValue
         }
     }
-    
+    init(cellImage: UIImage?, cellImageLink: String, commonName: String, taxonomy: String, wikipediaLink: String) {
+        self.givenCellImage = cellImage
+        self.givenCellImageLink = cellImageLink
+        self.givenCommonName = commonName
+        self.givenTaxonomy = taxonomy
+        self.givenWikipediaLink = wikipediaLink
+    }
     static func getContext() -> NSManagedObjectContext {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
@@ -160,9 +140,7 @@ class OceanLifeSpecies {
         options.setValue(cellImage, forKey: "cellImage")
         options.setValue(species.cellImageLink, forKey: "cellImageLink")
         options.setValue(species.commonName, forKey: "commonName")
-        options.setValue(species.imageFile, forKey: "imageFile")
-        options.setValue(species.imagePath, forKey: "imagePath")
-        options.setValue(species.latinName, forKey: "latinName")
+        options.setValue(species.taxonomy, forKey: "taxonomy")
         options.setValue(species.wikipediaLink, forKey: "wikipediaLink")
         
         do {
@@ -184,7 +162,7 @@ class OceanLifeSpecies {
                 do {
                     try context.save()
                 } catch {
-                    print("Error trying to delete record \(result.latinName)")
+                    print("Error trying to delete record \(result.taxonomy)")
                 }
             }
             print("Deleted \(fetchResults.count) species")
@@ -196,12 +174,12 @@ class OceanLifeSpecies {
     
     static func updateOceanSpecieCellImage(species: Species) {
         let context = getContext()
-        let predicate = NSPredicate(format: "latinName == %@ ", argumentArray: [species.latinName])
+        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [species.taxonomy])
         let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
         var fetchResults: [Species] = []
         
         fetchRequest.predicate = predicate
-
+        
         do {
             fetchResults = try context.fetch(fetchRequest)
             var cellImage: Data? = nil
@@ -220,9 +198,9 @@ class OceanLifeSpecies {
         }
     }
     
-    static func isSpecieExist(latinName: String) -> Bool? {
+    static func isSpecieExist(taxonomy: String) -> Bool? {
         let context = getContext()
-        let predicate = NSPredicate(format: "latinName == %@ ", argumentArray: [latinName])
+        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [taxonomy])
         let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
         var fetchResults: [Species] = []
         fetchRequest.predicate = predicate
@@ -238,18 +216,8 @@ class OceanLifeSpecies {
                 exists =  false
             }
         } catch  {
-            print("Error looking for \(latinName) specie")
+            print("Error looking for \(taxonomy) specie")
         }
         return exists
-    }
-    
-    init(cellImage: UIImage?, cellImageLink: String, commonName: String, imageFile: String, imagePath: String?, latinName: String, wikipediaLink: String) {
-        self.givenCellImage = cellImage
-        self.givenCellImageLink = cellImageLink
-        self.givenCommonName = commonName
-        self.givenImageFile = imageFile
-        self.givenImagePath = imagePath
-        self.givenLatinName = latinName
-        self.givenWikipediaLink = wikipediaLink
     }
 }

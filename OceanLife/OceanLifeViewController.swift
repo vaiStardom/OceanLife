@@ -16,11 +16,11 @@ var OCEANLIFESPECIES: [Species] = []
 
 class OceanLifeViewController: ExpandingViewController {
     fileprivate var cellsIsOpen = [Bool]()
+    @IBOutlet weak var oceanLifeTitleLable: UILabel!
     
     var task: URLSessionDownloadTask!
     var session: URLSession!
     var cache: NSCache<AnyObject, AnyObject>!
-    
 }
 // MARK: life cycle
 extension OceanLifeViewController{
@@ -34,7 +34,7 @@ extension OceanLifeViewController{
         
         //Load initial data
         for item in dataToLoad {
-            if OceanLifeSpecies.isSpecieExist(latinName: item.givenLatinName) == false {
+            if OceanLifeSpecies.isSpecieExist(taxonomy: item.givenTaxonomy) == false {
                 OceanLifeSpecies.updateSpecies(species: item)
             }
         }
@@ -48,6 +48,8 @@ extension OceanLifeViewController{
         session = URLSession.shared
         task = URLSessionDownloadTask()
         self.cache = NSCache()
+        
+        self.oceanLifeTitleLable.text = "\(OCEANLIFESPECIES[currentIndex].commonName!)"
     }
 }
 // MARK: Helpers
@@ -77,35 +79,49 @@ extension OceanLifeViewController {
         let gestureDown = Init(UISwipeGestureRecognizer(target: self, action: #selector(OceanLifeViewController.swipeHandler(_:)))) {
             $0.direction = .down
         }
+
         toView.addGestureRecognizer(gestureUp)
         toView.addGestureRecognizer(gestureDown)
+
     }
+    
     func swipeHandler(_ sender: UISwipeGestureRecognizer){
         let indexPath = IndexPath(row: currentIndex, section: 0)
+        
         guard let cell = collectionView?.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell else {return}
         
         //double swipe up transition
         if cell.isOpened == true && sender.direction == .up {
-            OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex = cell.oceanLifeIndex!
+            OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex = currentIndex
             pushToViewController(getViewController())
         }
+        
         let open = sender.direction == .up ? true : false
         cell.cellIsOpen(open)
         cellsIsOpen[(indexPath as NSIndexPath).row] = cell.isOpened
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.oceanLifeTitleLable.text = "\(OCEANLIFESPECIES[currentIndex].commonName!)"
+    }
+    
 }
 // MARK: UICollectionViewDataSource
 extension OceanLifeViewController {
+
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         super.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
+        
         guard let cell = cell as? OceanLifeCollectionViewCell else { return }
         let index = (indexPath as NSIndexPath).row % OCEANLIFESPECIES.count
         let specie = OCEANLIFESPECIES[index]
-        
+
         //Check if there is an image saved to core data
         if specie.cellImage != nil {
             cell.oceanLifeImageView.image = UIImage(data: specie.cellImage as! Data)
-            print("Core data image used, no need to download it")
+            //print("Core data image used, no need to download it")
+            cell.activityIndicatorView.stopAnimating()
         } else {
             cell.oceanLifeImageView.image = UIImage(named: "placeholder")
             let url = URL(string: specie.cellImageLink!)
@@ -119,7 +135,7 @@ extension OceanLifeViewController {
                             updateCell.activityIndicatorView.stopAnimating()
                             specie.cellImage = UIImagePNGRepresentation(img)! as NSData?
                             OceanLifeSpecies.updateOceanSpecieCellImage(species: specie)
-                            print("Had to dowload cell image from the web.")
+                            //print("Had to dowload cell image from the web.")
                         }
                     })
                 }
@@ -127,8 +143,7 @@ extension OceanLifeViewController {
             task.resume()
         }
         cell.oceanLifeImageView.contentMode = .scaleAspectFit
-        cell.oceanLifeNameLabel.text = specie.commonName
-        cell.oceanLifeIndex = index
+        cell.oceanLifeNameLabel.text = specie.taxonomy
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell , currentIndex == (indexPath as NSIndexPath).row else {return}

@@ -32,11 +32,6 @@ extension  TestTableViewController: UIWebViewDelegate {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OceanLifeDetailCell") as! OceanLifeDetailTableViewCell
-        
-//        let web = UIWebView(frame: CGRect(x:0, y:0, width:320, height:378))
-//        web.loadRequest(NSURLRequest(url: NSURL(string: SPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].givenWikipediaLink)! as URL) as URLRequest)
-//        web.isUserInteractionEnabled = true
-//        cell.contentView.addSubview(web)
         cell.url = OCEANLIFESPECIES[OceanLifeUser.sharedInstance.givenCurrentOceanLifeIndex].wikipediaLink
         return cell
     }
