@@ -10,108 +10,95 @@ import CoreData
 import Foundation
 import UIKit
 
-var dataToLoad: [OceanLifeSpecies] = [
-    OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , commonName: "Coral"
-        , taxonomy: "Corals"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Coral")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2015/07/03/10/39814_orig.jpg"
-        , commonName: "Butterflyfish"
-        , taxonomy: "Chaetodontidae"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Butterflyfish")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2009/05/21/16/56747_orig.jpg"
-        , commonName: "Benthic Predatory"
-        , taxonomy: "Benthic Predatory"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Wrasse")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2014/10/09/10/66013_orig.jpg"
-        , commonName: "Reef Herbivorous"
-        , taxonomy: "Reef Herbivorous"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Coral_reef_fish#Herbivores")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2016/07/21/01/30824_orig.jpg"
-        , commonName: "Pelagic"
-        , taxonomy: "Pelagic"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Pelagic_fish")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2011/10/14/15/97777_orig.jpg"
-        , commonName: "Nudibranch"
-        , taxonomy: "Nudibranchia"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Nudibranch")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2009/05/19/14/97207_orig.jpg"
-        , commonName: "Porcupinefish"
-        , taxonomy: "Diodon antennatus"
-        , wikipediaLink: "https://en.wikipedia.org/wiki/Porcupinefish")
-    , OceanLifeSpecies(
-        cellImage: nil
-        , cellImageLink: "http://media.eol.org/content/2013/11/24/23/62748_orig.jpg"
-        , commonName: "ShrimpCoral"
-        , taxonomy: "Conical Spider Crab"
-        , wikipediaLink: "https://nl.wikipedia.org/wiki/Xenocarcinus_tuberculatus")
-]
-
 class OceanLifeSpecies {
     
     fileprivate var cellImage: UIImage?
     fileprivate var cellImageLink: String?
     fileprivate var commonName: String?
-    fileprivate var taxonomy: String?
-    fileprivate var wikipediaLink: String?
+    fileprivate var cellDescription: String?
+    fileprivate var cellShortDescription: String?
+    fileprivate var icunRedListCategory: String?
+    fileprivate var familly: String?
+    fileprivate var parentFamilly: String?
+    fileprivate var informationLink: String?
     
-    var givenCellImage: UIImage? {
+    var thisCellImage: UIImage? {
         get { return cellImage }
         set {
-            if newValue != nil {
-                cellImage = newValue
-            } else {
-                cellImage = nil
-            }
+            cellImage = newValue
         }
     }
-    var givenCellImageLink: String {
+    var thisCellImageLink: String {
         get { return cellImageLink! }
         set {
             cellImageLink = newValue
         }
     }
-    var givenCommonName: String {
+    var thisCommonName: String {
         get { return commonName! }
         set {
             commonName = newValue
         }
     }
-    var givenTaxonomy: String {
-        get { return taxonomy! }
+    var thisCellDescription: String? {
+        get { return cellDescription! }
         set {
-            taxonomy = newValue
+            cellDescription = newValue
         }
     }
-    var givenWikipediaLink: String {
-        get { return wikipediaLink! }
+    var thisCellShortDescription: String? {
+        get { return cellShortDescription! }
         set {
-            wikipediaLink = newValue
+            cellShortDescription = newValue
         }
     }
-    init(cellImage: UIImage?, cellImageLink: String, commonName: String, taxonomy: String, wikipediaLink: String) {
-        self.givenCellImage = cellImage
-        self.givenCellImageLink = cellImageLink
-        self.givenCommonName = commonName
-        self.givenTaxonomy = taxonomy
-        self.givenWikipediaLink = wikipediaLink
+    var thisIcunRedListCategory: String? {
+        get { return icunRedListCategory! }
+        set {
+            icunRedListCategory = newValue
+        }
     }
+    var thisFamilly: String? {
+        get { return familly }
+        set {
+            familly = newValue
+        }
+    }
+    var thisParentFamilly: String? {
+        get { return parentFamilly }
+        set {
+            parentFamilly = newValue
+        }
+    }
+    var thisInformationLink: String {
+        get { return informationLink! }
+        set {
+            informationLink = newValue
+        }
+    }
+    init(cellImage: UIImage?
+        , cellImageLink: String
+        , commonName: String
+        , cellDescription: String?
+        , cellShortDescription: String?
+        , icunRedListCategory: String?
+        , familly: String?
+        , parentFamilly: String?
+        , informationLink: String) {
+        self.thisCellImage = cellImage
+        self.thisCellImageLink = cellImageLink
+        self.thisCommonName = commonName
+        self.thisCellDescription = cellDescription
+        self.thisCellShortDescription = cellShortDescription
+        self.thisIcunRedListCategory = icunRedListCategory
+        self.thisFamilly = familly
+        self.thisParentFamilly = parentFamilly
+        self.thisInformationLink = informationLink
+    }
+
     static func getContext() -> NSManagedObjectContext {
-        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        //return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        return (UIApplication.shared.delegate as! AppDelegate).coreDataManager.persistentContainer.viewContext
     }
     
     static func getSpecies() -> [Species] {
@@ -140,8 +127,8 @@ class OceanLifeSpecies {
         options.setValue(cellImage, forKey: "cellImage")
         options.setValue(species.cellImageLink, forKey: "cellImageLink")
         options.setValue(species.commonName, forKey: "commonName")
-        options.setValue(species.taxonomy, forKey: "taxonomy")
-        options.setValue(species.wikipediaLink, forKey: "wikipediaLink")
+        options.setValue(species.familly, forKey: "familly")
+        options.setValue(species.informationLink, forKey: "informationLink")
         
         do {
             try context.save()
@@ -162,7 +149,7 @@ class OceanLifeSpecies {
                 do {
                     try context.save()
                 } catch {
-                    print("Error trying to delete record \(result.taxonomy)")
+                    print("Error trying to delete record \(result.familly)")
                 }
             }
             print("Deleted \(fetchResults.count) species")
@@ -174,7 +161,7 @@ class OceanLifeSpecies {
     
     static func updateOceanSpecieCellImage(species: Species) {
         let context = getContext()
-        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [species.taxonomy])
+        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [species.familly])
         let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
         var fetchResults: [Species] = []
         
@@ -198,9 +185,9 @@ class OceanLifeSpecies {
         }
     }
     
-    static func isSpecieExist(taxonomy: String) -> Bool? {
+    static func isSpecieExist(familly: String) -> Bool? {
         let context = getContext()
-        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [taxonomy])
+        let predicate = NSPredicate(format: "taxonomy == %@ ", argumentArray: [familly])
         let fetchRequest: NSFetchRequest<Species> = NSFetchRequest(entityName: "Species")
         var fetchResults: [Species] = []
         fetchRequest.predicate = predicate
@@ -216,7 +203,7 @@ class OceanLifeSpecies {
                 exists =  false
             }
         } catch  {
-            print("Error looking for \(taxonomy) specie")
+            print("Error looking for \(familly) specie")
         }
         return exists
     }

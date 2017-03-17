@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Species" representedClassName="Species" syncable="YES" codeGenerationType="class">
+        <attribute name="cellDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cellImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="cellImageLink" attributeType="String" syncable="YES"/>
+        <attribute name="cellShortDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="commonName" attributeType="String" syncable="YES"/>
-        <attribute name="taxonomy" attributeType="String" syncable="YES"/>
+        <attribute name="familly" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iucnRedListCategory" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wikipediaLink" attributeType="String" syncable="YES"/>
+        <relationship name="childFamilly" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="parentFamilly" inverseEntity="Species" syncable="YES"/>
+        <relationship name="parentFamilly" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Species" inverseName="childFamilly" inverseEntity="Species" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Species" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Species" positionX="-15023" positionY="-12519" width="128" height="193"/>
     </elements>
 </model>

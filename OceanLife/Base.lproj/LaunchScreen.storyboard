@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,29 +18,35 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OceanLife Launch View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOe-a5-Dt3">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="8EE-LU-goB"/>
-                                    <constraint firstAttribute="height" constant="21" id="xAk-if-qnE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017 Ocean Life. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOe-a5-Dt3">
+                                <rect key="frame" x="0.0" y="989.5" width="768" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sWW-1O-tUi">
+                                <rect key="frame" x="324" y="452.5" width="120" height="120"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NOe-a5-Dt3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="JkG-Bg-jJ8"/>
-                            <constraint firstItem="NOe-a5-Dt3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XKs-YM-Q35"/>
+                            <constraint firstItem="sWW-1O-tUi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vdo-Xs-Jad"/>
+                            <constraint firstItem="NOe-a5-Dt3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="aoR-ET-NUK"/>
+                            <constraint firstAttribute="trailing" secondItem="NOe-a5-Dt3" secondAttribute="trailing" id="deN-3S-4Nc"/>
+                            <constraint firstItem="sWW-1O-tUi" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="f6K-rf-SMv"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="NOe-a5-Dt3" secondAttribute="bottom" constant="20" id="mKz-Wj-NLO"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.34375" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIcon" width="120" height="120"/>
+    </resources>
 </document>

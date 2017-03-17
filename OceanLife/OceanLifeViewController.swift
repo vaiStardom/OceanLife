@@ -7,6 +7,8 @@
 //
 // endangered species rating website: http://www.iucnredlist.org/details/155097/0
 // encyclopedia: http://eol.org/pages/1012924/overview
+// explore: http://coralnet.ucsd.edu/about/
+// explore: http://creationwiki.org/Lace_coral
 
 import CoreData
 import expanding_collection
@@ -30,11 +32,15 @@ extension OceanLifeViewController{
         super.viewDidLoad()
         
         //empty data
-        //OceanLifeSpecies.emptySpecies()
+        OceanLifeSpecies.emptySpecies()
+        
+        //read data file
+        readDataFromFile(file: "data")
+        printData()
         
         //Load initial data
-        for item in dataToLoad {
-            if OceanLifeSpecies.isSpecieExist(taxonomy: item.givenTaxonomy) == false {
+        for item in masterFamillies {
+            if OceanLifeSpecies.isSpecieExist(familly: item.thisFamilly!) == false {
                 OceanLifeSpecies.updateSpecies(species: item)
             }
         }
@@ -143,7 +149,7 @@ extension OceanLifeViewController {
             task.resume()
         }
         cell.oceanLifeImageView.contentMode = .scaleAspectFit
-        cell.oceanLifeNameLabel.text = specie.taxonomy
+        cell.oceanLifeNameLabel.text = specie.familly
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? OceanLifeCollectionViewCell , currentIndex == (indexPath as NSIndexPath).row else {return}
