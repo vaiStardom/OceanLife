@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 import UIKit
 
-class OceanLifeSpecies {
+class OceanLifeSpecies_old {
     
     fileprivate var cellImage: UIImage?
     fileprivate var cellImageLink: String?
@@ -122,17 +122,17 @@ class OceanLifeSpecies {
         let options = NSManagedObject(entity: entity!, insertInto:context)
         
         var cellImage: Data? = nil
-        cellImage = (species.cellImage != nil ? UIImagePNGRepresentation(species.cellImage!)! as Data : nil)
+        //cellImage = (species.cellImage != nil ? UIImagePNGRepresentation(species.cellImage!)! as Data : nil)
         
         options.setValue(cellImage, forKey: "cellImage")
-        options.setValue(species.cellImageLink, forKey: "cellImageLink")
-        options.setValue(species.commonName, forKey: "commonName")
-        options.setValue(species.familly, forKey: "familly")
-        options.setValue(species.informationLink, forKey: "informationLink")
+//        options.setValue(species.cellImageLink, forKey: "cellImageLink")
+//        options.setValue(species.commonName, forKey: "commonName")
+//        options.setValue(species.familly, forKey: "familly")
+//        options.setValue(species.informationLink, forKey: "informationLink")
         
         do {
             try context.save()
-            print("Saved species: \(species.commonName)")
+            //            print("Saved species: \(species.commonName)")
         } catch {
             print("Failed to save species: \(error)")
         }

@@ -32,20 +32,20 @@ extension OceanLifeViewController{
         super.viewDidLoad()
         
         //empty data
-        OceanLifeSpecies.emptySpecies()
+        //OceanLifeSpecies.emptySpecies()
         
         //read data file
         readDataFromFile(file: "data")
         printData()
         
         //Load initial data
-        for item in masterFamillies {
-            if OceanLifeSpecies.isSpecieExist(familly: item.thisFamilly!) == false {
-                OceanLifeSpecies.updateSpecies(species: item)
-            }
-        }
+//        for item in masterFamillies {
+//            if OceanLifeSpecies.isSpecieExist(familly: item.thisFamilly!) == false {
+//                OceanLifeSpecies.updateSpecies(species: item)
+//            }
+//        }
         
-        OCEANLIFESPECIES = OceanLifeSpecies.getSpecies()
+        //        OCEANLIFESPECIES = OceanLifeSpecies.getSpecies()
         
         registerCell()
         fillCellIsOpenArray()
@@ -140,7 +140,7 @@ extension OceanLifeViewController {
                             updateCell.oceanLifeImageView?.image = img
                             updateCell.activityIndicatorView.stopAnimating()
                             specie.cellImage = UIImagePNGRepresentation(img)! as NSData?
-                            OceanLifeSpecies.updateOceanSpecieCellImage(species: specie)
+                            //OceanLifeSpecies.updateOceanSpecieCellImage(species: specie)
                             //print("Had to dowload cell image from the web.")
                         }
                     })
