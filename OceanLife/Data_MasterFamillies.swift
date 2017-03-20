@@ -11,20 +11,29 @@ import UIKit
 
 var masterFamillies: [OceanLifeSpecies] = [
     OceanLifeSpecies(
-        name: "Corals"
+        name: "Coral"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Coral"
-        , parentFamilly: nil
+        , family: "Coral"
+        , parentFamily: nil
         , color: UIColor.black
+    )
+    
+    ,     OceanLifeSpecies(
+        name: "Sponge"
+        , cellImage: nil
+        , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
+        , family: "Sponge"
+        , parentFamily: "Coral"
+        , color: UIColor.darkGray
     )
 
     ,     OceanLifeSpecies(
         name: "Sponge 1"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Sponge"
-        , parentFamilly: "Coral"
+        , family: "Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.darkGray
     )
     
@@ -32,8 +41,8 @@ var masterFamillies: [OceanLifeSpecies] = [
         name: "Sponge 2"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Sponge"
-        , parentFamilly: "Coral"
+        , family: "Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.darkGray
     )
 
@@ -42,79 +51,97 @@ var masterFamillies: [OceanLifeSpecies] = [
         name: "Sponge 3"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Sponge"
-        , parentFamilly: "Coral"
+        , family: "Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.darkGray
     )
 
 
     ,     OceanLifeSpecies(
+        name: "Blue Sponge"
+        , cellImage: nil
+        , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
+        , family: "Blue Sponge"
+        , parentFamily: "Sponge"
+        , color: UIColor.blue
+    )
+
+    ,     OceanLifeSpecies(
         name: "Blue Sponge 1"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Blue Sponge"
-        , parentFamilly: "Sponge"
+        , family: "Blue Sponge"
+        , parentFamily: "Sponge"
         , color: UIColor.blue
     )
 
     
     ,     OceanLifeSpecies(
-        name: "White Sponge 1"
+        name: "White Sponge"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "White Sponge"
-        , parentFamilly: "Sponge"
+        , family: "Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.white
     )
 
     
     
     ,     OceanLifeSpecies(
+        name: "Red Sponge"
+        , cellImage: nil
+        , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
+        , family: "Red Sponge"
+        , parentFamily: "Sponge"
+        , color: UIColor.red
+    )
+
+
+    ,     OceanLifeSpecies(
         name: "Red Sponge 1"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Red Sponge"
-        , parentFamilly: "Sponge"
+        , family: "Red Sponge 1"
+        , parentFamily: "Red Sponge"
         , color: UIColor.red
     )
 
 
     ,     OceanLifeSpecies(
-        name: "Red Sponge 1-1"
+        name: "Red Sponge 2"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Red Sponge 1"
-        , parentFamilly: "Red Sponge"
+        , family: "Red Sponge 2"
+        , parentFamily: "Red Sponge"
         , color: UIColor.red
     )
 
 
     ,     OceanLifeSpecies(
-        name: "Red Sponge 2-1"
+        name: "Red Sponge 3"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Red Sponge 2"
-        , parentFamilly: "Red Sponge"
+        , family: "Red Sponge 3"
+        , parentFamily: "Red Sponge"
         , color: UIColor.red
     )
 
 
     ,     OceanLifeSpecies(
-        name: "Red Sponge 3-1"
+        name: "Bob Sponge"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Red Sponge 3"
-        , parentFamilly: "Red Sponge"
-        , color: UIColor.red
+        , family: "Bob Sponge"
+        , parentFamily: "Coral"
+        , color: UIColor.yellow
     )
-
 
     ,     OceanLifeSpecies(
         name: "Bob Sponge 1"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Bob Sponge"
-        , parentFamilly: "Coral"
+        , family: "Bob Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.yellow
     )
 
@@ -123,8 +150,8 @@ var masterFamillies: [OceanLifeSpecies] = [
         name: "Bob Sponge 2"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Bob Sponge"
-        , parentFamilly: "Coral"
+        , family: "Bob Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.yellow
     )
 
@@ -133,8 +160,8 @@ var masterFamillies: [OceanLifeSpecies] = [
         name: "Bob Sponge 3"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Bob Sponge"
-        , parentFamilly: "Coral"
+        , family: "Bob Sponge"
+        , parentFamily: "Coral"
         , color: UIColor.yellow
     )
 
@@ -143,43 +170,9 @@ var masterFamillies: [OceanLifeSpecies] = [
         name: "Butterfly fish"
         , cellImage: nil
         , cellImageLink: "http://media.eol.org/content/2013/11/03/02/23834_orig.jpg"
-        , familly: "Butterfly fish"
-        , parentFamilly: nil
+        , family: "Butterfly fish"
+        , parentFamily: nil
         , color: UIColor.green
     )
-
-
-//    , OceanLifeSpecies(
-//        cellImage: nil
-//        , cellImageLink: "http://media.eol.org/content/2015/07/03/10/39814_orig.jpg"
-//        , commonName: "Butterflyfish"
-//        , icunRedListCategory: nil
-//        , parentFamilly: nil
-//        , taxonomy: "Chaetodontidae"
-//        , wikipediaLink: "https://en.wikipedia.org/wiki/Butterflyfish")
-//    , OceanLifeSpecies(
-//        cellImage: nil
-//        , cellImageLink: "http://media.eol.org/content/2009/05/21/16/56747_orig.jpg"
-//        , commonName: "Benthic Predatory"
-//        , icunRedListCategory: nil
-//        , parentFamilly: nil
-//        , taxonomy: "Benthic Predatory"
-//        , wikipediaLink: "https://en.wikipedia.org/wiki/Wrasse")
-//    , OceanLifeSpecies(
-//        cellImage: nil
-//        , cellImageLink: "http://media.eol.org/content/2014/10/09/10/66013_orig.jpg"
-//        , commonName: "Reef Herbivorous"
-//        , icunRedListCategory: nil
-//        , parentFamilly: nil
-//        , taxonomy: "Reef Herbivorous"
-//        , wikipediaLink: "https://en.wikipedia.org/wiki/Coral_reef_fish#Herbivores")
-//    , OceanLifeSpecies(
-//        cellImage: nil
-//        , cellImageLink: "http://media.eol.org/content/2016/07/21/01/30824_orig.jpg"
-//        , commonName: "Pelagic"
-//        , icunRedListCategory: nil
-//        , parentFamilly: nil
-//        , taxonomy: "Pelagic"
-//        , wikipediaLink: "https://en.wikipedia.org/wiki/Pelagic_fish")
 ]
 

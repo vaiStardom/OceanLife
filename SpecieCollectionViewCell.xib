@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="SpecieCollectionViewCell" customModule="OceanLife" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="130" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="130" height="174"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p4f-EV-Gnt">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="130" id="Fcj-cn-6qY"/>
+                            <constraint firstAttribute="width" constant="130" id="eOe-MI-UKc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5K-qf-erb">
+                        <rect key="frame" x="0.0" y="156" width="130" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.066666666666666666" green="0.24313725490196078" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkM-be-Z3Y">
+                        <rect key="frame" x="0.0" y="139" width="130" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="s5K-qf-erb" firstAttribute="height" secondItem="ZkM-be-Z3Y" secondAttribute="height" id="4sP-R3-H0J"/>
+                <constraint firstItem="s5K-qf-erb" firstAttribute="top" secondItem="ZkM-be-Z3Y" secondAttribute="bottom" constant="-1" id="6ec-TY-nuW"/>
+                <constraint firstItem="ZkM-be-Z3Y" firstAttribute="height" secondItem="p4f-EV-Gnt" secondAttribute="height" constant="-112" id="Jip-Ed-Mtv"/>
+                <constraint firstItem="p4f-EV-Gnt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NaS-lS-qO6"/>
+                <constraint firstItem="ZkM-be-Z3Y" firstAttribute="top" secondItem="p4f-EV-Gnt" secondAttribute="bottom" constant="9" id="RGt-Yb-Cpa"/>
+                <constraint firstItem="s5K-qf-erb" firstAttribute="leading" secondItem="ZkM-be-Z3Y" secondAttribute="leading" id="ey9-FI-Rhp"/>
+                <constraint firstAttribute="trailing" secondItem="p4f-EV-Gnt" secondAttribute="trailing" id="fR8-Jx-P5b"/>
+                <constraint firstItem="ZkM-be-Z3Y" firstAttribute="width" secondItem="p4f-EV-Gnt" secondAttribute="width" id="iBb-yf-NhK"/>
+                <constraint firstItem="p4f-EV-Gnt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="nbl-xW-0Cf"/>
+                <constraint firstItem="s5K-qf-erb" firstAttribute="width" secondItem="ZkM-be-Z3Y" secondAttribute="width" id="nwf-v5-gkT"/>
+                <constraint firstItem="ZkM-be-Z3Y" firstAttribute="leading" secondItem="p4f-EV-Gnt" secondAttribute="leading" id="qOu-zd-B5H"/>
+            </constraints>
+            <size key="customSize" width="130" height="174"/>
+            <connections>
+                <outlet property="numberOfSubspeciesLabel" destination="s5K-qf-erb" id="NvO-Cx-67E"/>
+                <outlet property="specieImageView" destination="p4f-EV-Gnt" id="B30-VB-OR9"/>
+                <outlet property="specieNameLabel" destination="ZkM-be-Z3Y" id="V9F-rD-vaV"/>
+            </connections>
+            <point key="canvasLocation" x="-301" y="-158"/>
+        </collectionViewCell>
+    </objects>
+</document>

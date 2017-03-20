@@ -257,26 +257,17 @@
         <scene sceneID="9Mc-Hk-fdc">
             <objects>
                 <collectionViewController id="q4P-xf-SJL" customClass="SpeciesCollectionViewController" customModule="OceanLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="DxK-5c-0O2">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DxK-5c-0O2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0KQ-Zo-qkJ">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="130" height="174"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HV0-zA-9Ep">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="q4P-xf-SJL" id="reG-Kf-3Cj"/>
                             <outlet property="delegate" destination="q4P-xf-SJL" id="gRS-4j-s5G"/>
@@ -286,13 +277,31 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9k-0S-ohr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="-3548.2758620689656"/>
+            <point key="canvasLocation" x="1660" y="-3548"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1sl-6L-XKo">
+            <objects>
+                <viewController id="DkR-W0-hpp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hiu-Kt-Gmd"/>
+                        <viewControllerLayoutGuide type="bottom" id="TRG-TD-46a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zyl-X0-yXA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWX-zI-XRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2438" y="-3241"/>
         </scene>
         <!--Familly Child Collection View Controller-->
         <scene sceneID="Ivi-je-3jl">
             <objects>
                 <collectionViewController storyboardIdentifier="FamillyChildCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaV-JW-9nA" customClass="FamillyChildCollectionViewController" customModule="OceanLife" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="K5Q-Q6-aWO">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="K5Q-Q6-aWO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -320,7 +329,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLf-SS-zlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2526" y="-3548"/>
+            <point key="canvasLocation" x="2438" y="-3936"/>
         </scene>
         <!--Fish Id Tab Bar Controller-->
         <scene sceneID="HEL-js-StY">

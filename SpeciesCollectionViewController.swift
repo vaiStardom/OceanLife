@@ -8,76 +8,63 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class SpeciesCollectionViewController: UICollectionViewController {
-    
-    var firstParentFamillies = [OceanLifeSpecies]()
-    
-    
-    var numberOfSubspecies = 0
-    
-    var dictionary: [String:Int] = [:]
-    
-    var countedSpecieName: String?
-    var countedSpecies = [String]()
-    
-    var dataSources = [UIColor]()
+    fileprivate var firstParentFamillies = [OceanLifeSpecies]()
+    fileprivate var parentSpeciesDictionary: [String:Int] = [:]
+    fileprivate var countedSpecieName: String?
+    fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+    fileprivate let itemsPerRow: CGFloat = 2
 }
 //MARK: Actions
 extension SpeciesCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let famillyChildCollectionViewController = (self.storyboard?.instantiateViewController(withIdentifier: "FamillyChildCollectionViewController"))! as! FamillyChildCollectionViewController
+        let key = Array(parentSpeciesDictionary.keys)[indexPath.row]
+        famillyChildCollectionViewController.parentFamily = key
         self.navigationController?.pushViewController(famillyChildCollectionViewController, animated: true)
+    }
+}
+//MARK: UICollectionViewDelegateFlowLayout
+extension SpeciesCollectionViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: 174)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }
 //MARK: Collection view management
 extension SpeciesCollectionViewController{
+    fileprivate func registerCell() {
+        let nib = UINib(nibName: String(describing: SpecieCollectionViewCell.self), bundle: nil)
+        collectionView?.register(nib, forCellWithReuseIdentifier: String(describing: SpecieCollectionViewCell.self))
+    }
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.count
+        return parentSpeciesDictionary.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = dataSources[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SpecieCollectionViewCell.self), for: indexPath as IndexPath) as! SpecieCollectionViewCell
+
+        let key = Array(parentSpeciesDictionary.keys)[indexPath.row]
+        let array = parentSpeciesDictionary[key]
+        cell.specieImageView.image = UIImage(named: "testImage")
+        cell.specieNameLabel.text = key
+        cell.numberOfSubspeciesLabel.text = "\(array!)"
+        
         return cell
-    }
-}
-//MARK: Helpers
-extension SpeciesCollectionViewController{
-    
-    func countSubSpecies(oceanLifeSpecies: OceanLifeSpecies){
-        
-        //print("Now evaluating oceanLifeSpecies.thisFamilly = \(oceanLifeSpecies.thisFamilly)")
-        
-        var evaluatedSpecies = countedSpecies.filter{ $0 == oceanLifeSpecies.thisFamilly}
-        
-        if evaluatedSpecies.count > 0 {
-            //print("\(evaluatedSpecies[0]) already evaluated, escaping...")
-            return
-        } else {
-            countedSpecies.append(oceanLifeSpecies.thisFamilly!)
-            //print("oceanLifeSpecies.thisFamilly! = \(oceanLifeSpecies.thisFamilly!)")
-        }
-        
-        let subSpecies = masterFamillies.filter{ $0.thisParentFamilly == oceanLifeSpecies.thisFamilly}
-        if subSpecies.count > 0 {
-            
-//            print("subSpecies[0].thisParentFamilly = \(subSpecies[0].thisParentFamilly)")
-//            print("subSpecies.count = \(subSpecies.count)")
-            
-            numberOfSubspecies += subSpecies.count
-            //            print("numberOfSubspecies = \(numberOfSubspecies)")
-            for thisOceanLife in subSpecies {
-                //print("counting subspecies of  = \(thisOceanLife.thisFamilly)")
-                countSubSpecies(oceanLifeSpecies: thisOceanLife)
-            }
-        }
-//        else {
-//            print("subSpecies.count = \(subSpecies.count)")
-//        }
     }
 }
 //MARK: Life-cycle
@@ -85,31 +72,18 @@ extension SpeciesCollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstParentFamillies = masterFamillies.filter{ $0.thisParentFamilly == nil }
-        //print("firstParentFamillies = \(firstParentFamillies.count)")
-        
+        firstParentFamillies = masterFamillies.filter{ $0.thisParentFamily == nil }
+        countedSpecies = []
         for thisOceanLife in firstParentFamillies {
-            numberOfSubspecies = 1
+            print("Will count subspecies of parent family : \(thisOceanLife.thisFamily)")
+            //numberOfSubspecies = 1 //add parent family entry
             countSubSpecies(oceanLifeSpecies: thisOceanLife)
-            dictionary[thisOceanLife.thisFamilly!] = numberOfSubspecies
+            parentSpeciesDictionary[thisOceanLife.thisFamily!] = numberOfSubspecies
             numberOfSubspecies = 0
+            countedSpecies = []
         }
-        
-        print(dictionary)
-        
-        dataSources.append(UIColor.black)
-        dataSources.append(UIColor.blue)
-        dataSources.append(UIColor.brown)
-        dataSources.append(UIColor.cyan)
-        dataSources.append(UIColor.darkGray)
-        dataSources.append(UIColor.green)
-        dataSources.append(UIColor.orange)
-        dataSources.append(UIColor.purple)
-        dataSources.append(UIColor.red)
-        
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        registerCell()
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

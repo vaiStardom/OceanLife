@@ -22,9 +22,11 @@
 		BA73FC7B1E7BDB080080C47E /* SpeciesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73FC7A1E7BDB080080C47E /* SpeciesCollectionViewController.swift */; };
 		BA73FC7D1E7BDFFB0080C47E /* FamillyChildCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73FC7C1E7BDFFB0080C47E /* FamillyChildCollectionViewController.swift */; };
 		BA73FC821E7BEBED0080C47E /* OceanLifeSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73FC811E7BEBED0080C47E /* OceanLifeSpecies.swift */; };
-		BA73FC841E7BF3D20080C47E /* OceanLifeProtocolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73FC831E7BF3D20080C47E /* OceanLifeProtocolExtensions.swift */; };
 		BA833B621DBF14DE00D0DD68 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA833B611DBF14DE00D0DD68 /* CoreDataManager.swift */; };
 		BA9208D91DB75A2C00D61D74 /* OceanLifeUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9208D81DB75A2C00D61D74 /* OceanLifeUser.swift */; };
+		BA950C841E7D3D1D0055CA3F /* SpecieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA950C821E7D3D1D0055CA3F /* SpecieCollectionViewCell.swift */; };
+		BA950C851E7D3D1D0055CA3F /* SpecieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA950C831E7D3D1D0055CA3F /* SpecieCollectionViewCell.xib */; };
+		BA950C871E7EACA00055CA3F /* OceanLifeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA950C861E7EACA00055CA3F /* OceanLifeFunctions.swift */; };
 		BAB6584C1DC0549300AF9EF3 /* Data_MasterFamillies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB6584B1DC0549300AF9EF3 /* Data_MasterFamillies.swift */; };
 		BABC96481DB4BED100CC8AA2 /* OceanLifeSpecies_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies_old.swift */; };
 		BAD2537D1DB1D09E00603FBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD2537C1DB1D09E00603FBC /* AppDelegate.swift */; };
@@ -55,9 +57,11 @@
 		BA73FC7A1E7BDB080080C47E /* SpeciesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesCollectionViewController.swift; sourceTree = "<group>"; };
 		BA73FC7C1E7BDFFB0080C47E /* FamillyChildCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamillyChildCollectionViewController.swift; sourceTree = "<group>"; };
 		BA73FC811E7BEBED0080C47E /* OceanLifeSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OceanLifeSpecies.swift; sourceTree = "<group>"; };
-		BA73FC831E7BF3D20080C47E /* OceanLifeProtocolExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OceanLifeProtocolExtensions.swift; sourceTree = "<group>"; };
 		BA833B611DBF14DE00D0DD68 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = OceanLife/CoreDataManager.swift; sourceTree = "<group>"; };
 		BA9208D81DB75A2C00D61D74 /* OceanLifeUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OceanLifeUser.swift; path = OceanLife/OceanLifeUser.swift; sourceTree = "<group>"; };
+		BA950C821E7D3D1D0055CA3F /* SpecieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecieCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA950C831E7D3D1D0055CA3F /* SpecieCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecieCollectionViewCell.xib; sourceTree = "<group>"; };
+		BA950C861E7EACA00055CA3F /* OceanLifeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OceanLifeFunctions.swift; sourceTree = "<group>"; };
 		BAB6584B1DC0549300AF9EF3 /* Data_MasterFamillies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data_MasterFamillies.swift; path = OceanLife/Data_MasterFamillies.swift; sourceTree = "<group>"; };
 		BABC96471DB4BED100CC8AA2 /* OceanLifeSpecies_old.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OceanLifeSpecies_old.swift; path = OceanLife/OceanLifeSpecies_old.swift; sourceTree = "<group>"; };
 		BAD253791DB1D09E00603FBC /* OceanLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OceanLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,17 +99,19 @@
 			children = (
 				BA3900631DB4AEA000E6B181 /* OceanLifeCollectionViewCell.xib */,
 				BA6320DA1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib */,
+				BA950C831E7D3D1D0055CA3F /* SpecieCollectionViewCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
 		};
-		BA1EEF4E1DB4A900000BD986 /* Cells */ = {
+		BA1EEF4E1DB4A900000BD986 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BA3900621DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift */,
 				BA6320DC1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift */,
+				BA950C821E7D3D1D0055CA3F /* SpecieCollectionViewCell.swift */,
 			);
-			name = Cells;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		BA6320D71DB4DFEF003DD4F0 /* View Controllers */ = {
@@ -145,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				BA73FC741E7BBB3F0080C47E /* OceanLifeEnums.swift */,
-				BA73FC831E7BF3D20080C47E /* OceanLifeProtocolExtensions.swift */,
+				BA950C861E7EACA00055CA3F /* OceanLifeFunctions.swift */,
 				BA73FC701E7BA4C10080C47E /* OceanLifeStructs.swift */,
 			);
 			name = Helpers;
@@ -176,10 +182,19 @@
 			name = Singletons;
 			sourceTree = "<group>";
 		};
+		BA950C811E7D3CD60055CA3F /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				BA1EEF4E1DB4A900000BD986 /* Views */,
+				BA1EEF4D1DB4A8F5000BD986 /* Xibs */,
+			);
+			name = Collections;
+			sourceTree = "<group>";
+		};
 		BAD253701DB1D09E00603FBC = {
 			isa = PBXGroup;
 			children = (
-				BA1EEF4E1DB4A900000BD986 /* Cells */,
+				BA950C811E7D3CD60055CA3F /* Collections */,
 				BA71750B1DB8FECE00BC85BA /* DataManagement */,
 				51076599B219AE09CA9EBF90 /* Frameworks */,
 				BA73FC7E1E7BEA100080C47E /* Helpers */,
@@ -191,7 +206,6 @@
 				BA6320DE1DB5D56C003DD4F0 /* Storyboards */,
 				BA73FC7F1E7BEA270080C47E /* UIControlSubclasses */,
 				BA6320D71DB4DFEF003DD4F0 /* View Controllers */,
-				BA1EEF4D1DB4A8F5000BD986 /* Xibs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,6 +306,7 @@
 				BAD253841DB1D09E00603FBC /* Assets.xcassets in Resources */,
 				BA6320DB1DB5CC46003DD4F0 /* OceanLifeDetailTableViewCell.xib in Resources */,
 				BA359EF61E4F092100BC1CF8 /* data.txt in Resources */,
+				BA950C851E7D3D1D0055CA3F /* SpecieCollectionViewCell.xib in Resources */,
 				BAD253821DB1D09E00603FBC /* Main.storyboard in Resources */,
 				BA5E25971E52EC1A00CE43AD /* GoogleService-Info.plist in Resources */,
 			);
@@ -353,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA73FC711E7BA4C10080C47E /* OceanLifeStructs.swift in Sources */,
+				BA950C841E7D3D1D0055CA3F /* SpecieCollectionViewCell.swift in Sources */,
 				BA73FC821E7BEBED0080C47E /* OceanLifeSpecies.swift in Sources */,
 				BAB6584C1DC0549300AF9EF3 /* Data_MasterFamillies.swift in Sources */,
 				BA73FC7B1E7BDB080080C47E /* SpeciesCollectionViewController.swift in Sources */,
@@ -362,6 +378,7 @@
 				BA6320DD1DB5CC85003DD4F0 /* OceanLifeDetailTableViewCell.swift in Sources */,
 				BA73FC751E7BBB3F0080C47E /* OceanLifeEnums.swift in Sources */,
 				BA6320D91DB4E12F003DD4F0 /* TestTableViewController.swift in Sources */,
+				BA950C871E7EACA00055CA3F /* OceanLifeFunctions.swift in Sources */,
 				BA3900641DB4AEA000E6B181 /* OceanLifeCollectionViewCell.swift in Sources */,
 				BA71750E1DB8FEF500BC85BA /* OceanLife.xcdatamodeld in Sources */,
 				BAFE98961DC4947C00243E56 /* CsvImporter.swift in Sources */,
@@ -369,7 +386,6 @@
 				BABC96481DB4BED100CC8AA2 /* OceanLifeSpecies_old.swift in Sources */,
 				BA833B621DBF14DE00D0DD68 /* CoreDataManager.swift in Sources */,
 				BA9208D91DB75A2C00D61D74 /* OceanLifeUser.swift in Sources */,
-				BA73FC841E7BF3D20080C47E /* OceanLifeProtocolExtensions.swift in Sources */,
 				BA73FC771E7BBD900080C47E /* OceanLifeUIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
