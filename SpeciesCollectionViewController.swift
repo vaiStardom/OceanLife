@@ -18,10 +18,16 @@ class SpeciesCollectionViewController: UICollectionViewController {
 //MARK: Actions
 extension SpeciesCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        countedSpecies = []
         let famillyChildCollectionViewController = (self.storyboard?.instantiateViewController(withIdentifier: "FamillyChildCollectionViewController"))! as! FamillyChildCollectionViewController
         let key = Array(parentSpeciesDictionary.keys)[indexPath.row]
         famillyChildCollectionViewController.parentFamily = key
         self.navigationController?.pushViewController(famillyChildCollectionViewController, animated: true)
+    }
+    func add(){
+    }
+    func search(){
     }
 }
 //MARK: UICollectionViewDelegateFlowLayout
@@ -75,16 +81,32 @@ extension SpeciesCollectionViewController{
         firstParentFamillies = masterFamillies.filter{ $0.thisParentFamily == nil }
         countedSpecies = []
         for thisOceanLife in firstParentFamillies {
-            print("Will count subspecies of parent family : \(thisOceanLife.thisFamily)")
-            //numberOfSubspecies = 1 //add parent family entry
+            //print("Will count subspecies of parent family : \(thisOceanLife.thisFamily)")
             countSubSpecies(oceanLifeSpecies: thisOceanLife)
             parentSpeciesDictionary[thisOceanLife.thisFamily!] = numberOfSubspecies
             numberOfSubspecies = 0
             countedSpecies = []
         }
         registerCell()
+        configureNavigationBar()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+//MARK: Navigation Bar Management
+extension SpeciesCollectionViewController{
+    func configureNavigationBar(){
+        let addButton = addBtn()
+        self.navigationItem.leftBarButtonItems = [addButton]
+        
+        let searchButton = searchBtn()
+        self.navigationItem.rightBarButtonItems = [searchButton]
+    }
+    func addBtn () -> UIBarButtonItem {
+        return OceanLifeUIBarButtonItem().customAddBarButton(target: self, selector: #selector(SpeciesCollectionViewController.add))
+    }
+    func searchBtn () -> UIBarButtonItem {
+        return OceanLifeUIBarButtonItem().customSearchBarButton(target: self, selector: #selector(SpeciesCollectionViewController.search))
     }
 }

@@ -46,7 +46,7 @@ var masterFamillies: [OceanLifeSpecies] = [
         , color: UIColor.darkGray
     )
 
-    
+
     ,     OceanLifeSpecies(
         name: "Sponge 3"
         , cellImage: nil
@@ -55,7 +55,6 @@ var masterFamillies: [OceanLifeSpecies] = [
         , parentFamily: "Coral"
         , color: UIColor.darkGray
     )
-
 
     ,     OceanLifeSpecies(
         name: "Blue Sponge"
@@ -85,7 +84,7 @@ var masterFamillies: [OceanLifeSpecies] = [
         , color: UIColor.white
     )
 
-    
+
     
     ,     OceanLifeSpecies(
         name: "Red Sponge"
