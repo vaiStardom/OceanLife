@@ -13,7 +13,7 @@ import UIKit
 class OceanLifeSpecies {
     
     fileprivate var name: String?
-    fileprivate var cellImage: UIImage?
+    fileprivate var cellImage: UIImage? //make this an array of images names [String] in case there are alternate pictures, and also the images will be loaded in the app for the first releadse
     fileprivate var cellImageLink: String?
     fileprivate var family: String?
     fileprivate var parentFamily: String?

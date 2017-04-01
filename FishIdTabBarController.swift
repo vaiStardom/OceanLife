@@ -27,6 +27,9 @@ extension FishIdTabBarController {
         tabBarMapImage = UIImage(named: "TabBarItemMap")
         
         configureTabBarItems(item: 0)
+        
+        
+        readDataFromFile(file: "data")
 
     }
     override func didReceiveMemoryWarning() {

@@ -56,12 +56,6 @@ extension FamillyChildCollectionViewController{
         cell.specieImageView.image = UIImage(named: "testImage")
         cell.specieNameLabel.text = sortedParentSpeciesDictionary[indexPath.row].specie
         cell.numberOfSubspeciesLabel.text = "\(sortedParentSpeciesDictionary[indexPath.row].numberOfSubspecies)"
-//        if sortedParentSpeciesDictionary[indexPath.row].numberOfSubspecies > 1 {
-//            cell.numberOfSubspeciesLabel.text = "\(sortedParentSpeciesDictionary[indexPath.row].numberOfSubspecies)"
-//        } else {
-//            cell.numberOfSubspeciesLabel.text = ""
-//        }
-        
 
         return cell
     }
