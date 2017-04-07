@@ -72,8 +72,13 @@ extension SpeciesCollectionViewController{
 
         firstParentFamillies = SPECIES.filter{ $0.thisParentFamily == nil }
         for oceanLife in firstParentFamillies {
+            
             var node = OceanLifeSpecieNode(name: oceanLife.thisName!, id: oceanLife.hashValue)
+
+            print("------> WILL BUILD NODE: \(oceanLife.thisName!)")
             BUILD_FAMILY_TREE(ofThisNode: &node)
+            print("------> BUILT NODE: \(node)")
+            
             OCEAN_LIFE_SPECIE_NODES.append(node)
         }
         registerCell()
