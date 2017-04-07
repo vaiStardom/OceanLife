@@ -21,6 +21,5 @@ var NAVBAR_BACKICON = "back"
 var NAVBAR_BACKICON_CGRECT = CGRect(x: 0, y: 0, width: 44, height: 44)
 var NAVBAR_BACKICON_IMAGE_CGRECT = CGRect(x: 0, y: 0, width: 16.92, height: 30)
 
-var countedSpecies = [String]()
-var numberOfSubspecies = 0
-
+var SPECIES = [OceanLifeSpecies]()
+var OCEAN_LIFE_SPECIE_NODES = [OceanLifeSpecieNode]()

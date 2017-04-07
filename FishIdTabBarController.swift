@@ -28,13 +28,10 @@ extension FishIdTabBarController {
         
         configureTabBarItems(item: 0)
         
-        
         readDataFromFile(file: "data")
-
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 //MARK: Tab Bar Item Configurations

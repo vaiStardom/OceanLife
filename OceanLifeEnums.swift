@@ -8,6 +8,12 @@
 
 import Foundation
 
+//enum CsvFields: Int {
+//    case imageName = 0,	name, nameLatin, familyLatin, family, parentFamily, description
+//}
+enum CsvFields: Int {
+    case imageName = 0,	name, nameLatin, parentFamily, description
+}
 enum FishIdViews: Int {
     case fishId = 0, notifications, map
 }

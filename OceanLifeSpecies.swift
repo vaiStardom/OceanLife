@@ -10,37 +10,36 @@ import CoreData
 import Foundation
 import UIKit
 
-class OceanLifeSpecies {
+class OceanLifeSpecies: Hashable, Equatable {
     
+    private static let idGenerator = OceanLifeHashableIdGenerator()
+    
+    fileprivate var imageNames = [String]() //array of images names [String] for alternate pics
     fileprivate var name: String?
-    fileprivate var cellImage: UIImage? //make this an array of images names [String] in case there are alternate pictures, and also the images will be loaded in the app for the first releadse
-    fileprivate var cellImageLink: String?
-    fileprivate var family: String?
+    fileprivate var nameLatin: String?    
     fileprivate var parentFamily: String?
-    fileprivate var color: UIColor?
+    fileprivate var desc: String?
+    fileprivate let id: Int
     
+    var hashValue: Int{
+        return id
+    }
+    var thisImageNames: [String] {
+        get { return imageNames }
+        set {
+            imageNames = newValue
+        }
+    }
     var thisName: String? {
         get { return name! }
         set {
             name = newValue
         }
     }
-    var thisCellImage: UIImage? {
-        get { return cellImage }
+    var thisNameLatin: String? {
+        get { return nameLatin! }
         set {
-            cellImage = newValue
-        }
-    }
-    var thisCellImageLink: String {
-        get { return cellImageLink! }
-        set {
-            cellImageLink = newValue
-        }
-    }
-    var thisFamily: String? {
-        get { return family }
-        set {
-            family = newValue
+            nameLatin = newValue
         }
     }
     var thisParentFamily: String? {
@@ -49,24 +48,43 @@ class OceanLifeSpecies {
             parentFamily = newValue
         }
     }
-    var thisColor: UIColor? {
-        get { return color }
+    var thisDescription: String? {
+        get { return desc }
         set {
-            color = newValue
+            desc = newValue
         }
     }
-    init(name: String?
-        , cellImage: UIImage?
-        , cellImageLink: String
-        , family: String?
+    init(imageNames: [String]
+        , name: String?
+        , nameLatin: String?
         , parentFamily: String?
-        , color: UIColor?
+        , description: String?
         ) {
+        self.id = OceanLifeSpecies.idGenerator.generate()
+        self.thisImageNames = imageNames
         self.thisName = name
-        self.thisCellImage = cellImage
-        self.thisCellImageLink = cellImageLink
-        self.thisFamily = family
+        self.thisNameLatin = nameLatin
         self.thisParentFamily = parentFamily
-        self.thisColor = color
+        self.thisDescription = description
+    }
+    init(oceanLifeSpecie: OceanLifeSpecies) {
+        self.id = OceanLifeSpecies.idGenerator.generate()
+        self.thisImageNames = oceanLifeSpecie.thisImageNames
+        self.thisName = oceanLifeSpecie.thisName
+        self.thisNameLatin = oceanLifeSpecie.thisNameLatin
+        self.thisParentFamily = oceanLifeSpecie.thisParentFamily
+        self.thisDescription = oceanLifeSpecie.thisDescription
+    }
+}
+func ==(oceanLifeSpecies1: OceanLifeSpecies, oceanLifeSpecies2: OceanLifeSpecies) -> Bool {
+        return oceanLifeSpecies1 === oceanLifeSpecies2
+}
+extension OceanLifeSpecies: CustomStringConvertible { //this extension allows for better debugging
+    var description: String {
+        let name = (self.thisName != nil ? self.thisName! : ">>>>NIL<<<<<")
+        let nameLatin = (self.thisNameLatin != nil ? self.thisNameLatin! : ">>>>NIL<<<<<")
+        let parentFamily = (self.thisParentFamily != nil ? self.thisParentFamily! : ">>>>NIL<<<<<")
+        let text = "Name -> \(name) nameLatin -> \(nameLatin) parentFamily -> \(parentFamily)"
+        return text
     }
 }

@@ -35,7 +35,8 @@ extension OceanLifeViewController{
         //OceanLifeSpecies.emptySpecies()
         
         //read data file
-        readDataFromFile(file: "data")
+        //readDataFromFile(file: "data")
+        readDataFromFile(file: "Species.BenthicPredatory")
         printData()
         
         //Load initial data

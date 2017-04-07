@@ -8,35 +8,13 @@
 
 import Foundation
 
-func countSubSpecies(oceanLifeSpecies: OceanLifeSpecies){
-    let parent = oceanLifeSpecies.thisParentFamily != nil ? oceanLifeSpecies.thisParentFamily! : ""
-    let family = oceanLifeSpecies.thisFamily != nil ? oceanLifeSpecies.thisFamily! : ""
-    let specie = oceanLifeSpecies.thisName != nil ? oceanLifeSpecies.thisName! : ""
-    let entry = "\(parent)\(family)\(specie)"
-
-    //has this entry been counted?
-    //let evaluatedSpecies = countedSpecies.filter{ $0 == entry }
-    //let evaluatedSpecies = countedSpecies.filter{ $0.contains(entry) }
-    let evaluatedSpecies = countedSpecies.contains(entry)
-    
-    //if evaluatedSpecies.count > 0 {
-    if countedSpecies.contains(entry) {
-        print("ALREADY COUNTED entry: \(entry)")
-        return
-    } else {
-        numberOfSubspecies += 1
-
-        countedSpecies.append(String(entry))
-        print("COUNTED specie: \(entry)")
-        print("numberOfSubspecies: \(numberOfSubspecies)")
-
-        //check to see if this entry has subspecies
-        let subSpecies = masterFamillies.filter{ $0.thisParentFamily == family}
-        if subSpecies.count > 0 {
-            print("ENTRY \(entry) HAS \(subSpecies.count) SUBSPECIES")
-            for thisOceanLife in subSpecies {
-                countSubSpecies(oceanLifeSpecies: thisOceanLife)
-            }
+func BUILD_FAMILY_TREE(ofThisNode: inout OceanLifeSpecieNode) {
+    let childrenSpecies = SPECIES.filter{ $0.thisParentFamily == ofThisNode.name }
+    if childrenSpecies.count > 0 {
+        for specie in childrenSpecies {
+            var node = OceanLifeSpecieNode(name: specie.thisName!, id: specie.hashValue)
+            BUILD_FAMILY_TREE(ofThisNode: &node)
+            ofThisNode.add(child: node)
         }
     }
 }

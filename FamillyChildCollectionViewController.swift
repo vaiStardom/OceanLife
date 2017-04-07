@@ -9,28 +9,19 @@
 import UIKit
 
 class FamillyChildCollectionViewController: UICollectionViewController {
-    var parentFamily: String!
+    var referenceSpecieId: Int!
     
-    fileprivate var speciesAndSubfamilies = [OceanLifeSpecies]()
-    fileprivate var species = [OceanLifeSpecies]()
-    fileprivate var dataSources = [UIColor]()
-    fileprivate var parentSpeciesDictionary: [String:Int] = [:]
-    fileprivate var sortedParentSpeciesDictionary:[(specie: String, numberOfSubspecies: Int)] = []
-    
+    fileprivate var childrenNodes = [OceanLifeSpecieNode]()
+    fileprivate var subSpecies = [OceanLifeSpecies]()
     fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
 }
 //MARK: Actions
 extension FamillyChildCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if sortedParentSpeciesDictionary[indexPath.row].numberOfSubspecies > 0 {
-            //present a new album view
-            let famillyChildCollectionViewController = (self.storyboard?.instantiateViewController(withIdentifier: "FamillyChildCollectionViewController"))! as! FamillyChildCollectionViewController
-            famillyChildCollectionViewController.parentFamily = sortedParentSpeciesDictionary[indexPath.row].specie
-            self.navigationController?.pushViewController(famillyChildCollectionViewController, animated: true)
-        } else {
-            //present the details of the entry
-        }
+        let famillyChildCollectionViewController = (self.storyboard?.instantiateViewController(withIdentifier: "FamillyChildCollectionViewController"))! as! FamillyChildCollectionViewController
+        famillyChildCollectionViewController.referenceSpecieId = childrenNodes[indexPath.row].id
+        self.navigationController?.pushViewController(famillyChildCollectionViewController, animated: true)
     }
     func back(){
         _ = self.navigationController?.popViewController(animated: true)
@@ -48,16 +39,53 @@ extension FamillyChildCollectionViewController{
         return 1
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sortedParentSpeciesDictionary.count
+        return childrenNodes.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SpecieCollectionViewCell.self), for: indexPath as IndexPath) as! SpecieCollectionViewCell
+        let oceanLifeSpecie = SPECIES.filter{ $0.hashValue == childrenNodes[indexPath.row].id }
         
-        cell.specieImageView.image = UIImage(named: "testImage")
-        cell.specieNameLabel.text = sortedParentSpeciesDictionary[indexPath.row].specie
-        cell.numberOfSubspeciesLabel.text = "\(sortedParentSpeciesDictionary[indexPath.row].numberOfSubspecies)"
+        cell.specieImageView.image = UIImage(named: (oceanLifeSpecie[0].thisImageNames[0]))
+        cell.specieNameLabel.text = oceanLifeSpecie[0].thisName
+        cell.numberOfSubspeciesLabel.text = "\(childrenNodes[indexPath.row].childrenCount())"
 
         return cell
+    }
+}
+//MARK: Life-cycle
+extension FamillyChildCollectionViewController{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let species = SPECIES.filter{ $0.hashValue == referenceSpecieId }
+        let specie = species[0]
+        subSpecies = SPECIES.filter{ $0.thisParentFamily == specie.thisName }
+
+        for oceanLife in subSpecies {
+            var node = OceanLifeSpecieNode(name: oceanLife.thisName!, id: oceanLife.hashValue)
+            BUILD_FAMILY_TREE(ofThisNode: &node)
+            childrenNodes.append(node)
+        }
+        registerCell()
+        configureNavigationBar()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+//MARK: Navigation Bar Management
+extension FamillyChildCollectionViewController{
+    func configureNavigationBar(){
+        let backButton = backBtn()
+        self.navigationItem.leftBarButtonItems = [backButton]
+        let searchButton = searchBtn()
+        self.navigationItem.rightBarButtonItems = [searchButton]
+    }
+    func backBtn () -> UIBarButtonItem {
+        return OceanLifeUIBarButtonItem().customBackBarButton(target: self, selector: #selector(FamillyChildCollectionViewController.back))
+    }
+    func searchBtn () -> UIBarButtonItem {
+        return OceanLifeUIBarButtonItem().customSearchBarButton(target: self, selector: #selector(FamillyChildCollectionViewController.search))
     }
 }
 //MARK: UICollectionViewDelegateFlowLayout
@@ -75,62 +103,3 @@ extension FamillyChildCollectionViewController : UICollectionViewDelegateFlowLay
         return sectionInsets.left
     }
 }
-//MARK: Life-cycle
-extension FamillyChildCollectionViewController{
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //SHOW ENTRIES WITH SUB FAMILIES
-        speciesAndSubfamilies = masterFamillies.filter{ $0.thisParentFamily == parentFamily }
-        speciesAndSubfamilies = speciesAndSubfamilies.sorted(by: { $0.thisFamily?.localizedCaseInsensitiveCompare($1.thisFamily!) == ComparisonResult.orderedAscending })
-        
-        countedSpecies = []
-        numberOfSubspecies = 0
-        var previouslyCountedFamilly = ""
-        for thisOceanLife in speciesAndSubfamilies {
-            //print("COUNTING family : \(thisOceanLife.thisFamily!)")
-            if thisOceanLife.thisFamily! != previouslyCountedFamilly {
-                numberOfSubspecies = 0
-                countedSpecies = []
-                previouslyCountedFamilly = thisOceanLife.thisFamily!
-                //print ("previouslyCountedFamilly = \(previouslyCountedFamilly)")
-            }
-            countSubSpecies(oceanLifeSpecies: thisOceanLife)
-            parentSpeciesDictionary[thisOceanLife.thisFamily!] = numberOfSubspecies
-        }
-        
-        //SHOW unique for this parent family
-        species = masterFamillies.filter{ $0.thisFamily == parentFamily }
-        for thisOceanLife in species {
-            if thisOceanLife.thisName != thisOceanLife.thisFamily { //exclude the parent family entry description
-                parentSpeciesDictionary[thisOceanLife.thisName!] = 0
-            }
-        }
-        
-        sortedParentSpeciesDictionary = parentSpeciesDictionary.sorted(by: { (a, b) in (a.value) > (b.value)}) as! [(specie: String, numberOfSubspecies: Int)]
-        print(sortedParentSpeciesDictionary)
-
-        registerCell()
-        configureNavigationBar()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
-//MARK: Navigation Bar Management
-extension FamillyChildCollectionViewController{
-    func configureNavigationBar(){
-        let backButton = backBtn()
-        self.navigationItem.leftBarButtonItems = [backButton]
-        
-        let searchButton = searchBtn()
-        self.navigationItem.rightBarButtonItems = [searchButton]
-    }
-    func backBtn () -> UIBarButtonItem {
-        return OceanLifeUIBarButtonItem().customBackBarButton(target: self, selector: #selector(FamillyChildCollectionViewController.back))
-    }
-    func searchBtn () -> UIBarButtonItem {
-        return OceanLifeUIBarButtonItem().customSearchBarButton(target: self, selector: #selector(FamillyChildCollectionViewController.search))
-    }
-}
-

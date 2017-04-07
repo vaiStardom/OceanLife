@@ -16,21 +16,40 @@ func convertCSV(file: String){
     print("------> rows.count: \(rows.count)")
     if rows.count > 0 {
         data = []
-        //columnTitles = getStringFieldsForRow(row: rows.first!, delimiter: ",")
         columnTitles = getStringFieldsForRow(row: rows.first!, delimiter: "\t")
         for row in rows {
-            print("------> row: \(row)")
-            let fields = getStringFieldsForRow(row: row, delimiter: ",")
-            if fields.count != columnTitles.count { continue }
-            var dataRow = [String: String]()
-            for (index, field) in fields.enumerated() {
-                let fieldName = columnTitles[index]
-                dataRow[fieldName] = field
-                print("------> dataRow[fieldName]: \(dataRow[fieldName]!)")
+            let fields = getStringFieldsForRow(row: row, delimiter: "\t")
+            if fields.count != columnTitles.count {
+                
+                print("------> IMPORT ERROR: fields.count= \(fields.count), columnTitles.count= \(columnTitles.count)")
+                print("------> ENTRY: \(fields)")
+                
+                continue
             }
-            print("------> dataRow: \(dataRow)")
-            print(dataRow)
-            data += [dataRow]
+            let specie = OceanLifeSpecies(
+                imageNames: getStringFieldsForRow(row: fields[CsvFields.imageName.rawValue], delimiter: "/")
+                , name: fields[CsvFields.name.rawValue]
+                , nameLatin: fields[CsvFields.nameLatin.rawValue]
+//                , familyLatin: fields[CsvFields.familyLatin.rawValue]
+//                , family: fields[CsvFields.family.rawValue]
+//                , parentFamily: (fields[CsvFields.parentFamily.rawValue].isEmpty == true ? nil : fields[5])
+                //                , parentFamily: fields[CsvFields.parentFamily.rawValue]
+                , parentFamily: (fields[CsvFields.parentFamily.rawValue].isEmpty == true ? nil : fields[CsvFields.parentFamily.rawValue])
+                , description: fields[CsvFields.description.rawValue]
+            )
+            print("------> ADDED SPECIE: \(specie)")
+            SPECIES.append(specie)
+//            let fields = getStringFieldsForRow(row: row, delimiter: "\t")
+//            if fields.count != columnTitles.count { continue }
+//            var dataRow = [String: String]()
+//            for (index, field) in fields.enumerated() {
+//                let fieldName = columnTitles[index]
+//                dataRow[fieldName] = field
+//                print("------> dataRow[fieldName]: \(dataRow[fieldName]!)")
+//            }
+//            print("------> dataRow: \(dataRow)")
+//            print(dataRow)
+//            data += [dataRow]
         }
     } else {
         print("No data in file")
@@ -61,16 +80,17 @@ func printData(){
 }
 func readDataFromFile(file: String) -> String! {
     guard let filePath = Bundle.main.path(forResource: file, ofType: "csv") else {
+        print("-------> FILE READ ERROR: file \(file) not read.")
         return nil
     }
     print("-------> filePath: \(filePath)")
-    
     do {
-        let contents = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
+        //let contents = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
+        let contents = try String(contentsOfFile: filePath, encoding: String.Encoding.macOSRoman)
         convertCSV(file: contents)
         return contents
     } catch {
-        print("File read error for file \(file)")
+        print("File read error for file \(file). Error: \(error)")
         return nil
     }
 }
