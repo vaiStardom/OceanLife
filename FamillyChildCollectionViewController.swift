@@ -61,7 +61,8 @@ extension FamillyChildCollectionViewController{
         let oceanLifeSpecie = SPECIES.filter{ $0.hashValue == childNodes[indexPath.row].id }
         cell.specieImageView.image = UIImage(named: (oceanLifeSpecie[0].thisImageNames[0]))
         cell.specieNameLabel.text = oceanLifeSpecie[0].thisName
-        cell.numberOfSubspeciesLabel.text = "\(childNodes[indexPath.row].childrenCount())"
+        //cell.numberOfSubspeciesLabel.text = "\(childNodes[indexPath.row].childrenCount())"
+        cell.numberOfSubspeciesLabel.text = (childNodes[indexPath.row].childrenCount() > 0 ? "\(childNodes[indexPath.row].childrenCount())" : "")
 
         return cell
     }

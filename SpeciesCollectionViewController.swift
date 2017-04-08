@@ -92,7 +92,7 @@ extension SpeciesCollectionViewController{
     func configureNavigationBar(){
         let addButton = addBtn()
         self.navigationItem.leftBarButtonItems = [addButton]
-        
+        self.navigationItem.titleView = OceanLifeUILabel().navigationItemTotleLabel(title: "Ocean")
 //        let searchButton = searchBtn()
 //        self.navigationItem.rightBarButtonItems = [searchButton]
     }

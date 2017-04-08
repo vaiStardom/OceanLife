@@ -14,11 +14,11 @@ class OceanLifeUILabel: UILabel {
         
         var mutableAttributedString = NSMutableAttributedString()
         mutableAttributedString = NSMutableAttributedString(string: title, attributes: [
-            NSFontAttributeName:UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
+            NSFontAttributeName:UIFont.systemFont(ofSize: 25, weight: UIFontWeightLight)
             , NSForegroundColorAttributeName: OceanLifeColor.RedOrange
             ])
         
-        var titleLabel = UILabel()
+        let titleLabel = UILabel()
         titleLabel.attributedText = mutableAttributedString
         titleLabel.sizeToFit()
 
