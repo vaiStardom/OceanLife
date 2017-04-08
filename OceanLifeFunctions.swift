@@ -12,14 +12,10 @@ func BUILD_FAMILY_TREE(ofThisNode: inout OceanLifeSpecieNode) {
     let childrenSpecies = SPECIES.filter{ $0.thisParentFamily == ofThisNode.name }
     if childrenSpecies.count > 0 {
         for specie in childrenSpecies {
-            
-            
             var node = OceanLifeSpecieNode(name: specie.thisName!, id: specie.hashValue)
-            
-            print("------> WILL BUILD NODE: \(specie.thisName!)")
+            //print("------> WILL BUILD NODE: \(specie.thisName!)")
             BUILD_FAMILY_TREE(ofThisNode: &node)
-            print("------> BUILT NODE: \(node)")
-            
+            //print("------> BUILT NODE: \(node)")
             ofThisNode.add(child: node)
         }
     }

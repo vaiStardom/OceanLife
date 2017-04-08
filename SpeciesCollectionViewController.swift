@@ -10,22 +10,24 @@ import UIKit
 
 class SpeciesCollectionViewController: UICollectionViewController {
     fileprivate var firstParentFamillies = [OceanLifeSpecies]()
-    fileprivate var parentSpeciesDictionary: [Int:Int] = [:]
-    fileprivate var countedSpecieName: String?
     fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 2
 }
 //MARK: Actions
 extension SpeciesCollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         let famillyChildCollectionViewController = (self.storyboard?.instantiateViewController(withIdentifier: "FamillyChildCollectionViewController"))! as! FamillyChildCollectionViewController
         famillyChildCollectionViewController.referenceSpecieId = OCEAN_LIFE_SPECIE_NODES[indexPath.row].id
+        famillyChildCollectionViewController.navigationBarTitle = OCEAN_LIFE_SPECIE_NODES[indexPath.row].name
         self.navigationController?.pushViewController(famillyChildCollectionViewController, animated: true)
+        
+        
     }
     func add(){
     }
-    func search(){
-    }
+//    func search(){
+//    }
 }
 //MARK: UICollectionViewDelegateFlowLayout
 extension SpeciesCollectionViewController : UICollectionViewDelegateFlowLayout {
@@ -56,6 +58,7 @@ extension SpeciesCollectionViewController{
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SpecieCollectionViewCell.self), for: indexPath as IndexPath) as! SpecieCollectionViewCell
+        
         let oceanLifeSpecie = SPECIES.filter{ $0.hashValue == OCEAN_LIFE_SPECIE_NODES[indexPath.row].id }
         
         cell.specieImageView.image = UIImage(named: (oceanLifeSpecie[0].thisImageNames[0]))
@@ -69,16 +72,12 @@ extension SpeciesCollectionViewController{
 extension SpeciesCollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-
         firstParentFamillies = SPECIES.filter{ $0.thisParentFamily == nil }
         for oceanLife in firstParentFamillies {
-            
             var node = OceanLifeSpecieNode(name: oceanLife.thisName!, id: oceanLife.hashValue)
-
-            print("------> WILL BUILD NODE: \(oceanLife.thisName!)")
+            //print("------> WILL BUILD NODE: \(oceanLife.thisName!)")
             BUILD_FAMILY_TREE(ofThisNode: &node)
-            print("------> BUILT NODE: \(node)")
-            
+            //print("------> BUILT NODE: \(node)")
             OCEAN_LIFE_SPECIE_NODES.append(node)
         }
         registerCell()
@@ -94,13 +93,13 @@ extension SpeciesCollectionViewController{
         let addButton = addBtn()
         self.navigationItem.leftBarButtonItems = [addButton]
         
-        let searchButton = searchBtn()
-        self.navigationItem.rightBarButtonItems = [searchButton]
+//        let searchButton = searchBtn()
+//        self.navigationItem.rightBarButtonItems = [searchButton]
     }
     func addBtn () -> UIBarButtonItem {
         return OceanLifeUIBarButtonItem().customAddBarButton(target: self, selector: #selector(SpeciesCollectionViewController.add))
     }
-    func searchBtn () -> UIBarButtonItem {
-        return OceanLifeUIBarButtonItem().customSearchBarButton(target: self, selector: #selector(SpeciesCollectionViewController.search))
-    }
+//    func searchBtn () -> UIBarButtonItem {
+//        return OceanLifeUIBarButtonItem().customSearchBarButton(target: self, selector: #selector(SpeciesCollectionViewController.search))
+//    }
 }
